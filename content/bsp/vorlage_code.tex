@@ -1,0 +1,21 @@
+\section{Vorlage - Code}\label{sec:vorlage_code}
+
+Codevorlage (vgl. Kap.~\ref{sec:vorlage_code}).
+
+intern (vgl. Code~\ref{code:code_intern}).%--- Referenz 
+\begin{lstlisting}[language=C,caption={Quellcode in C: intern},label={code:code_intern}% C, TeX, Bash, Python
+]%--- Code einfügen
+
+	// ju 9-Jun-19
+  #include <stdio.h>
+  int main(void){
+    printf("Hallo Welt!\n");
+    return 0;
+  }
+\end{lstlisting}
+
+externe File \href{file:content/bsp/hallo.c}{\fcolorbox{gruen-dunkel}{gruen-hell}{hallo.c}}
+
+(vgl. Code~\ref{code:code_extern}).%--- Referenz 
+\lstinputlisting[language=C,caption={Quellcode in C: extern},label={code:code_extern}% HTML5, Python, Bash, C, C++, TeX
+]{content/bsp/hallo.c}% file

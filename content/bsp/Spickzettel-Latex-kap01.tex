@@ -1,0 +1,736 @@
+% FILE: kap01.tex  Version 1.0
+% AUTHOR:
+% letztes Update: 18-Mai-2019
+
+%\section{\LaTeX}
+
+\section{Zitieren}\label{zitieren}
+
+Literaturlistenverwaltungsprogramm: JabRef 
+
+% \cite{Schlüsselwort}
+% \nocite{Schlüsselwort}
+
+\nocite{*} Auch unzitierte Literatur wird gedruckt \verb|\nocite{*}|
+
+Zitat: vgl. \cite{monk_action_buch:2016} u. \cite{kofler_linux:2017} 
+
+\verb|vgl. \cite{monk_action_buch:2016} u. \cite{kofler_linux:2017}| 
+
+
+\section{Links}\label{sec:links}
+
+Verweis auf eine URL im Internet: 
+
+\url{https://www.google.de/}
+\verb|\url{https://www.google.de/}|
+
+\href{https://www.google.de/}{google}
+\verb|\href{https://www.google.de/}{google}|
+
+
+\href{mailto:xx@yy.eu}{(E-Mail)} 
+\verb|\href{mailto:xx@yy.eu}{(E-Mail)}|
+
+
+\href{file:content/bsp/logo.pdf}{\fcolorbox{gruen-dunkel}{gruen-hell}{logo.pdf}}
+\verb|\href{file:content/bsp/logo.pdf}|
+
+\href{file:content/bsp/hallo.c}{\fcolorbox{rot-dunkel}{rot-hell}{hallo.c}}
+\verb|\href{file:content/bsp/hallo.c}|
+
+%\href{run:content/bsp/video.mp4}{\fcolorbox{blau-dunkel}{blau-hell}{video.mp4}}
+%\verb|\href{run:content/bsp/video.mp4}|
+
+\section{Fußnote}
+
+Text\footnote{Fußnote} Text
+\verb|\footnote{Fußnote}|
+
+\section{Referenzieren}\label{referenzieren}
+
+Verweis auf eine andere Stelle im selben Dokument:
+
+Labeln von Section: Kapitel~(\ref{labelname}) oder (vgl.~\ref{zitieren}) 
+
+Labeln von Titel: vgl.~(\nameref{labelname}) 
+
+Labeln von Bildern: (vgl.~\ref{fig:latexproduktion}) 
+
+Labeln von Tabellen: (vgl.~\ref{tab:tabelle}) 
+
+Labeln von Quellcode: (vgl.~\ref{code:lstlisting}) 
+
+Labeln von Gleichungen: Formeln~\ref{eq:ekin} und \ref{eq:impuls}
+
+\LaTeX -Syntax (vgl.~\ref{code:referenzieren}). 
+\begin{lstlisting}[caption={Referenzieren},label={code:referenzieren},language=TeX% C, TeX, Bash, Python
+]-----Code einfügen---------------------------%
+	Labeln von Section-Nr: Kapitel~(\ref{labelname}) oder (vgl.~\ref{zitieren}) 
+	Labeln von Titel: vgl.~(\nameref{labelname}) 
+	Labeln von Bildern: (vgl.~\ref{fig:latexproduktion}) 
+	Labeln von Tabellen: (vgl.~\ref{tab:tabelle}) 
+	Labeln von Quellcode: (vgl.~\ref{code:lstlisting}) 
+	Labeln von Gleichungen: Formeln~\ref{eq:ekin} und \ref{eq:impuls}
+\end{lstlisting}
+
+\section{Randnotiz}
+
+Randnotiz: \marginpar[links]{rechts} 
+\verb|\marginpar[links]{rechts}| 
+
+\section{Index}
+	
+Indexeintrag: \index{Eintragsname!Untereintrag} 
+\verb|\index{Eintragsname!Untereintrag}|
+
+\section{Eigene Befehle - Abstand}
+
+\wichtig{xxx} \wort{yyy} \fremdwort{zzz} 
+\verb|\wichtig{xxx} \wort{yyy} \fremdwort{zzz}|
+
+horizontaler $\cdots$ \abstand{$\cdots$ Abstand}
+
+horizontaler Abstand $\cdots$ \hspace{2em} $\cdots$ Abstand
+
+vertikaler Abstand $\cdots$\\
+\vspace{3em}\\
+$\cdots$ Abstand
+
+\verb|\hspace{2em} vspace{3em}|
+
+% Abstand
+Abstand
+\vfill
+Abstand \hfill \today\\
+Abstand \hfil \today
+
+\section{PDF/A-1b erzeugen}\label{labelname}
+
+\begin{itemize}
+	\item Öffne die PDF-Datei mit Adobe Acrobat Pro.
+	\item In Acrobat Pro auf Werkzeuge / PDF-Standards / Preflight klicken
+	\item Suche im Preflight-Fenster nach <<Nach PDF/A-1b konvertieren>>,
+	welches sich in der Gruppe <<PDF/A-Standard>> befindet.
+	\item Starte die Konvertierung durch Doppelklick auf das Profil.
+	\item Es erscheint ein neues Fenster, gebe dort einen neuen Dateinamen ein
+	\item Wenn keine Fehler angezeigt werden, ist die neue Datei ein PDF/A-1b-konformes Dokument.	
+\end{itemize}
+
+\clearpage
+\section{Blindtext}
+\blindtext
+
+\blindtext
+
+\clearpage
+\section{Tabelle}
+
+(vgl.~\ref{tab:tabelle}). 
+\begin{table}[ht]% hier: htbp
+	\centering
+	\begin{tabular}{ll}% Spalte: lcr 
+		\toprule
+		\textbf{Nr.} & \textbf{Vorgehen} \\
+		\midrule
+		1 & Aktuellen Forschungsstand recherchieren \\
+		2 & Methoden entwickeln \\
+		3 & Schlussfolgerung aufstellen \\
+		\bottomrule
+	\end{tabular}
+	%------------------------------------
+	\caption{Tabelle}\label{tab:tabelle}%
+\end{table}
+
+\LaTeX -Syntax (vgl.~\ref{code:tabelle}). 
+\begin{lstlisting}[caption={\LaTeX: Tabelle},label={code:tabelle},language=TeX% C, TeX, Bash, Python
+]-----Code einfügen---------------------------%
+	\begin{table}[ht]% hier: htbp
+		\centering
+		\begin{tabular}{ll}% Spalte: lcr 
+			\toprule
+			\textbf{Nr.} & \textbf{Vorgehen} \\
+			\midrule
+			1 & Aktuellen Forschungsstand recherchieren \\
+			2 & Methoden entwickeln \\
+			3 & Schlussfolgerung aufstellen \\
+			\bottomrule
+		\end{tabular}
+		%------------------------------------
+		\caption{\LaTeX: Tabelle}\label{tab:tabelle}%
+	\end{table}
+\end{lstlisting}
+
+\clearpage
+\section{Abbildung}\label{abbildung}
+
+(vgl.~\ref{fig:latexproduktion})
+\begin{figure}[hb]% hier: htbp
+	\centering
+	\includegraphics[width=0.2\textwidth]{content/bsp/logo.pdf}
+	%------------------------------------
+	\caption{Latexproduktion}\label{fig:latexproduktion}% 
+\end{figure}
+
+\LaTeX -Syntax (vgl.~\ref{code:abbildung}). 
+\begin{lstlisting}[caption={\LaTeX: Abbildung},label={code:abbildung},language=TeX% C, TeX, Bash, Python
+]-----Code einfügen---------------------------%
+	\begin{figure}[hb]% hier: htbp
+		\centering
+		\includegraphics[width=0.2\textwidth]{content/bsp/logo.pdf}
+		%------------------------------------
+		\caption{Latexproduktion}\label{fig:latexproduktion}% 
+	\end{figure}
+\end{lstlisting}
+
+\clearpage
+Zwei Bilder nebeneinander (vgl.~\ref{fig:subfigure}). 
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.2\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{content/bsp/logo.pdf}
+		\subcaption{Bild 1}	
+	\end{subfigure}
+	\begin{subfigure}[b]{0.2\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{content/bsp/logo.pdf}
+		\subcaption{Bild 2}
+	\end{subfigure}
+	\caption{Zwei Bilder nebeneinander}\label{fig:subfigure}
+\end{figure}
+
+\LaTeX -Syntax (vgl.~\ref{code:subfigure}). 
+\begin{lstlisting}[caption={subfigure},label={code:subfigure},language=TeX% C, TeX, Bash, Python
+]-----Code einfügen---------------------------%
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.2\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{content/bsp/logo.pdf}
+			\subcaption{Bild 1}	
+		\end{subfigure}
+		\begin{subfigure}[b]{0.2\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{content/bsp/logo.pdf}
+			\subcaption{Bild 2}
+		\end{subfigure}
+		\caption{Zwei Bilder nebeneinander}
+	\end{figure}
+\end{lstlisting}
+
+\clearpage
+\section{Farben - Hinweis}
+
+% Text läuft über Seitenrand, wenn zu lang
+\fbox{kurzer farbiger Text}\\
+\colorbox{rot2}{kurzer farbiger Text}\\
+\fcolorbox{gruen-dunkel}{gruen-hell}{kurzer farbiger Text}\\
+
+\textbf{\textcolor{rot2}{fetter Text in Farbe}}
+
+\LaTeX -Syntax (vgl.~\ref{code:farben}). 
+\begin{lstlisting}[caption={Farben},label={code:farben},language=TeX% C, TeX, Bash, Python
+]-----Code einfügen---------------------------%
+	% Text läuft über Seitenrand, wenn zu lang
+	\fbox{kurzer farbiger Text}\\
+	\colorbox{rot2}{kurzer farbiger Text}\\
+	\fcolorbox{gruen-dunkel}{gruen-hell}{kurzer farbiger Text}\\	
+	\textbf{\textcolor{rot2}{fetter Text in Farbe}}
+\end{lstlisting}
+
+\begin{quote}
+	\textbf{Hinweis:}\\%
+	Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur, weil er Schmerz ist, es sei denn, es kommt zu zufälligen Umständen, in denen Mühen und Schmerz ihm große Freude bereiten können. Um ein triviales Beispiel zu nehmen, wer von uns unterzieht sich je anstrengender körperlicher
+\end{quote}
+
+\LaTeX -Syntax (vgl.~\ref{code:Hinweis-quote}). 
+
+\begin{lstlisting}[caption={Hinweis in quote},label={code:Hinweis-quote},language=TeX% C, TeX, Bash, Python
+]-----Code einfügen---------------------------%
+	\begin{quote}
+		\textbf{Hinweis:}\\%
+		Text
+	\end{quote}
+\end{lstlisting}
+
+\clearpage
+\begin{figure}[hb]
+	\centering
+	\begin{minipage}[b]{0.88\textwidth} 
+		\color{blau5}\rule{\textwidth}{2pt}\\%
+		\textbf{Hinweis:}\\
+		Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur, weil er Schmerz ist, es sei denn, es kommt zu zufälligen Umständen, in denen Mühen und Schmerz ihm große Freude bereiten können. Um ein triviales Beispiel zu nehmen, wer von uns unterzieht sich je anstrengender körperlicher
+		\\ \rule{\textwidth}{2pt}%
+		% \caption{}\label{}
+	\end{minipage}
+	% \caption{}\label{}
+\end{figure}
+
+\LaTeX -Syntax (vgl.~\ref{code:Hinweis-minipage}). 
+
+\begin{lstlisting}[caption={Hinweis in minipage},label={code:Hinweis-minipage},language=TeX% C, TeX, Bash, Python
+]-----Code einfügen---------------------------%
+	\begin{figure}[hb]
+		\centering
+		\begin{minipage}[b]{0.88\textwidth} 
+			\color{blau5}\rule{\textwidth}{2pt}\\%
+			\textbf{Hinweis:}\\
+			Text
+			\\ \rule{\textwidth}{2pt}%
+			% \caption{}\label{}
+		\end{minipage}
+		% \caption{}\label{}
+	\end{figure}
+\end{lstlisting}
+
+\begin{figure}[hb]
+	\centering
+	\fcolorbox{rot-dunkel}{rot4}{% Rahmen
+		\begin{minipage}[b]{0.88\textwidth} 
+			\color{white}
+			\textbf{Hinweis:}\\%
+			Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur, weil er Schmerz ist, es sei denn, es kommt zu zufälligen Umständen, in denen Mühen und Schmerz ihm große Freude bereiten können. Um ein triviales Beispiel zu nehmen, wer von uns unterzieht sich je anstrengender körperlicher
+			% \caption{}\label{}
+		\end{minipage}
+	}
+	% \caption{}\label{}
+\end{figure}
+
+\LaTeX -Syntax (vgl.~\ref{code:Hinweis-fcolorbox}). 
+
+\begin{lstlisting}[caption={Hinweis in fcolorbox},label={code:Hinweis-fcolorbox},language=TeX% C, TeX, Bash, Python
+]-----Code einfügen---------------------------%
+	\begin{figure}[hb]
+		\centering
+		\fcolorbox{rot-dunkel}{rot4}{% Rahmen
+			\begin{minipage}[b]{0.88\textwidth} 
+				\color{white}
+				\textbf{Hinweis:}\\%
+				Text
+				% \caption{}\label{}
+			\end{minipage}
+		}
+		% \caption{}\label{}
+	\end{figure}
+\end{lstlisting}
+
+\clearpage
+\section{Quellcode}
+
+\LaTeX -Syntax (vgl.~\ref{code:lstlisting}). 
+
+\begin{lstlisting}[caption={lstlisting},label={code:lstlisting},language=TeX% C, TeX, Bash, Python
+]-----Code einfügen---------------------------%
+	% Code
+\end{lstlisting}
+
+
+\lstinputlisting[caption={C-Programmierung},language=C]{content/bsp/hallo.c}
+
+\LaTeX -Syntax (vgl.~\ref{code:lstinputlisting}). 
+
+\begin{lstlisting}[caption={lstinputlisting},label={code:lstinputlisting},language=TeX% C, TeX, Bash, Python
+]-----Code einfügen---------------------------%
+	% Code
+	\lstinputlisting[language=C]{content/bsp/hallo.c}% file
+\end{lstlisting}
+
+\clearpage
+\begin{figure}[hb]
+	\centering
+	\fcolorbox{gruen-dunkel}{gruen-hell}{% Rahmen
+		\begin{minipage}[b]{0.5\textwidth} 
+			\lstinputlisting[caption={Hallo Welt},language=C]{content/bsp/hallo.c}
+			% \caption{}\label{}
+		\end{minipage}
+	}
+	% \caption{} \label{}
+\end{figure}
+
+\LaTeX -Syntax (vgl.~\ref{code:code-rahmen}). 
+
+\begin{lstlisting}[caption={Code im Rahmen},label={code:code-rahmen},language=TeX% C, TeX, Bash, Python
+]-----Code einfügen---------------------------%
+	\begin{figure}[hb]
+		\centering
+		\fcolorbox{gruen-dunkel}{gruen-hell}{% Rahmen
+		\begin{minipage}[b]{0.5\textwidth} 
+			\textbf{Code:}\\%
+			\lstinputlisting[language=C]{content/bsp/hallo.c}
+			% \caption{}\label{}
+		\end{minipage}
+		}
+		% \caption{} \label{}
+	\end{figure}
+\end{lstlisting}
+
+\clearpage
+\section{Gliederung}
+
+\LaTeX -Syntax (vgl.~\ref{code:gliederung}).
+
+\begin{lstlisting}[language=TeX,% C, TeX, Bash, Python
+	caption={Gliederung},label={code:gliederung}%
+]-----Code einfügen---------------------------%
+	% Kapitel:
+	\chapter \section \subsection \subsubsection \paragraph 
+\end{lstlisting}
+
+\clearpage
+\section{Minipage}
+
+\textbf{zwei Texte nebeneinander}\\
+
+\begin{figure}[hb]
+	\centering
+	\fbox{% Rahmen
+		\begin{minipage}[t]{0.4\textwidth} 
+			Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur, weil er Schmerz ist, es sei denn, es kommt zu zufälligen Umständen, in denen Mühen und Schmerz ihm große Freude bereiten können. Um ein triviales Beispiel zu nehmen, wer von uns unterzieht sich je anstrengender körperlicher
+			% \caption{}\label{}
+		\end{minipage}
+	}
+	\hfil
+	\fcolorbox{gruen-dunkel}{gruen-hell}{% Rahmen
+		\begin{minipage}[t]{0.4\textwidth}
+			Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur, weil er Schmerz ist, es sei denn, es kommt zu zufälligen Umständen, in denen Mühen und Schmerz ihm große Freude bereiten können. Um ein triviales Beispiel zu nehmen, wer von uns unterzieht sich je anstrengender körperlicher
+			% \caption{}\label{}
+		\end{minipage}
+	}
+	% \caption{}\label{}
+\end{figure}
+
+\LaTeX -Syntax (vgl.~\ref{code:zwei-texte-nebeneinander}). 
+\begin{lstlisting}[caption={zwei Texte nebeneinander },label={code:zwei-texte-nebeneinander},language=TeX% C, TeX, Bash, Python
+]-----Code einfügen---------------------------%
+	\begin{figure}[hb]
+		\centering
+		\fbox{% Rahmen
+		\begin{minipage}[t]{0.4\textwidth} 
+			Text
+			% \caption{}\label{}
+		\end{minipage}
+		}
+		\hfil
+		\fcolorbox{gruen-dunkel}{gruen-hell}{% Rahmen
+		\begin{minipage}[t]{0.4\textwidth}
+			Text
+			% \caption{}\label{}
+		\end{minipage}
+		}
+		% \caption{}\label{}
+	\end{figure}
+\end{lstlisting}
+
+\clearpage
+\textbf{Text und Abb. nebeneinander}\\
+
+\begin{figure}[hb]
+	\centering
+	\fbox{% Rahmen
+		\begin{minipage}[b]{0.5\textwidth} 
+			Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur, weil er Schmerz ist, es sei denn, es kommt zu zufälligen Umständen, in denen Mühen und Schmerz ihm große Freude bereiten können. 
+			\\\\
+			Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur, weil er Schmerz ist, es sei denn, es kommt zu zufälligen Umständen, in denen Mühen und Schmerz ihm große Freude bereiten können.
+			% \caption{}\label{}
+		\end{minipage}
+	}
+	\hfil
+	%\fbox{% Rahmen
+	\begin{minipage}[b]{0.2\textwidth}
+		\includegraphics[width=\textwidth]{content/bsp/logo.pdf}
+		\caption{Logo}
+		\label{logo} 
+	\end{minipage}
+	%}
+	% \caption{}\label{}
+\end{figure}
+
+\LaTeX -Syntax (vgl.~\ref{code:Text-Abb})
+
+\begin{lstlisting}[language=TeX,% C, TeX, Bash, Python
+caption={Text und Abb. nebeneinander},label={code:Text-Abb}%
+]-----Code einfügen---------------------------%
+	\begin{figure}[hb]
+		\centering
+		\fbox{% Rahmen
+		\begin{minipage}[b]{0.5\textwidth} 
+			Text
+			% \caption{}\label{}
+		\end{minipage}
+		}
+		\hfil
+		%\fbox{% Rahmen
+		\begin{minipage}[b]{0.2\textwidth}
+			\includegraphics[width=\textwidth]{content/bsp/logo.pdf}
+			\caption{Logo}\label{logo} 
+		\end{minipage}
+		%}
+		% \caption{}\label{}
+	\end{figure}
+\end{lstlisting}
+
+\clearpage
+\textbf{Liste und Abbildung nebeneinander}\\
+
+\begin{figure}[hb]
+	\centering
+	\fbox{% Rahmen
+		\begin{minipage}[b]{0.5\textwidth} 
+			\begin{itemize}
+				\item Listenpunkt a
+				\begin{itemize}
+					\item Listenpunkt c
+					\begin{itemize}
+						\item Listenpunkt d
+					\end{itemize}
+				\end{itemize}
+				\item Listenpunkt b
+			\end{itemize}
+			% \caption{}
+			% \label{}
+		\end{minipage}
+	}
+	\hfil
+	%\fbox{% Rahmen
+	\begin{minipage}[b]{0.2\textwidth}
+		\includegraphics[width=\textwidth]{content/bsp/logo.pdf}
+		\caption{Logo Farbe}
+		\label{logofarbe} 
+	\end{minipage}
+	%}
+	% \caption{}
+	% \label{}
+\end{figure}
+
+\LaTeX -Syntax (vgl.~\ref{code:Liste-Abb})
+
+\begin{lstlisting}[language=TeX,% C, TeX, Bash, Python
+caption={Liste und Abb. nebeneinander},label={code:Liste-Abb}%
+]-----Code einfügen---------------------------%
+	\begin{figure}[hb]
+		\centering
+		\fbox{% Rahmen
+		\begin{minipage}[b]{0.5\textwidth} 
+			\begin{itemize}
+				\item Listenpunkt a
+				\begin{itemize}
+					\item Listenpunkt c
+					\begin{itemize}
+						\item Listenpunkt d
+					\end{itemize}
+				\end{itemize}
+				\item Listenpunkt b
+			\end{itemize}
+			% \caption{}\label{}
+		\end{minipage}
+		}
+		\hfil
+		%\fbox{% Rahmen
+		\begin{minipage}[b]{0.2\textwidth}
+			\includegraphics[width=\textwidth]{content/bsp/logo.pdf}
+			\caption{Logo Farbe}\label{logofarbe} 
+		\end{minipage}
+		%}
+		% \caption{}\label{}
+	\end{figure}
+\end{lstlisting}
+
+\clearpage
+\textbf{Text und Code nebeneinander}\\
+
+\begin{figure}[hb]
+	\centering
+	%\fbox{
+	\begin{minipage}[b]{0.45\textwidth}
+		Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur, weil er Schmerz ist, es sei denn, es kommt zu zufälligen Umständen, in denen Mühen und Schmerz ihm große Freude bereiten können. Um ein triviales Beispiel zu nehmen, wer von uns unterzieht sich je anstrengender körperlicher
+		% \caption{}
+		% \label{}
+	\end{minipage}
+	%}
+	\hfil
+	\fcolorbox{gruen-dunkel}{gruen-hell}{% Rahmen
+		\begin{minipage}[b]{0.45\textwidth} 
+			\textbf{Code:}\\%
+			\lstinputlisting[caption={Ein kleines Programm in C},language=C]
+			{content/bsp/hallo.c}
+			% \caption{}
+			% \label{}
+		\end{minipage}
+	}
+	% \caption{}
+	% \label{}
+\end{figure}
+
+\LaTeX -Syntax (vgl.~\ref{code:Text-Code})
+
+\begin{lstlisting}[language=TeX,% C, TeX, Bash, Python
+caption={Text und Code nebeneinander},label={code:Text-Code}%
+]-----Code einfügen---------------------------%
+	\begin{figure}[hb]
+		\centering
+		%\fbox{
+		\begin{minipage}[b]{0.45\textwidth}
+			Text
+			% \caption{}\label{}
+		\end{minipage}
+		%}
+		\hfil
+		\fcolorbox{gruen-dunkel}{gruen-hell}{% Rahmen
+		\begin{minipage}[b]{0.45\textwidth} 
+			\textbf{Code:}\\%
+			\lstinputlisting[caption={Ein kleines Programm in C},language=C]
+			{content/bsp/hallo.c}
+			% \caption{}\label{}
+		\end{minipage}
+		}
+		% \caption{}\label{}
+	\end{figure}
+\end{lstlisting}
+
+
+\clearpage
+\section{Liste}
+
+\begin{itemize}
+	\item Listenpunkt a
+	\begin{itemize}
+		\item Listenpunkt c
+		\begin{itemize}
+			\item Listenpunkt d
+		\end{itemize}
+	\end{itemize}
+	\item Listenpunkt b
+\end{itemize}
+
+
+\LaTeX -Syntax (vgl.~\ref{code:Liste})
+
+\begin{lstlisting}[language=TeX,% C, TeX, Bash, Python
+caption={Liste},label={code:Liste}%
+]-----Code einfügen---------------------------%
+	\begin{itemize}
+		\item Listenpunkt a
+		\begin{itemize}
+			\item Listenpunkt c
+			\begin{itemize}
+				\item Listenpunkt d
+			\end{itemize}
+		\end{itemize}
+		\item Listenpunkt b
+	\end{itemize}	
+\end{lstlisting}
+
+\clearpage
+\section{Textcommands}
+
+50~Euro\\
+Google-Account\\
+Seite 42--45\\
+Gedankenstrich --- falls\\
+Mathe Minus $-1$\\
+Hier ist ein Satz\ldots und so geht es weiter.\\
+Hier ist ein Satz\ldots ~und so geht es weiter.\\
+\textbf{fetter Text}
+\textit{Text in Kursiv}
+\textbf{\textit{fetter Text in Kursiv}}\\
+\emph{Text betonen}
+
+
+\LaTeX -Syntax (vgl.~\ref{code:textcommands})
+
+\begin{lstlisting}[language=TeX,% C, TeX, Bash, Python
+caption={Textcommands},label={code:textcommands}%
+]-----Code einfügen---------------------------%
+	50~Euro\\
+	Google-Account\\
+	Seite 42--45\\
+	Gedankenstrich --- falls\\
+	Mathe Minus $-1$\\
+	Hier ist ein Satz\ldots und so geht es weiter.\\
+	Hier ist ein Satz\ldots ~und so geht es weiter.\\
+	\textbf{fetter Text}
+	\textit{Text in Kursiv}
+	\textbf{\textit{fetter Text in Kursiv}}\\
+	\emph{Text betonen}
+\end{lstlisting}
+
+\clearpage
+\section{Schriftgrößen}
+
+% klein
+\tiny Schriftgröße klein
+\scriptsize Schriftgröße 
+\footnotesize Schriftgröße
+\small Schriftgröße\\
+% normal
+\normalsize Schriftgröße normal\\
+% groß
+\large Schriftgröße
+\Large Schriftgröße
+\LARGE Schriftgröße
+\huge Schriftgröße
+\Huge Schriftgröße groß\\
+
+% normal
+\normalsize Schriftgröße normal\\
+
+\LaTeX -Syntax (vgl.~\ref{code:schriftgroessen})
+
+\begin{lstlisting}[language=TeX,% C, TeX, Bash, Python
+caption={Schriftgrößen},label={code:schriftgroessen}%
+]-----Code einfügen---------------------------%
+	% klein
+	\tiny Schriftgröße klein
+	\scriptsize Schriftgröße 
+	\footnotesize Schriftgröße
+	\small Schriftgröße\\
+	% normal
+	\normalsize Schriftgröße normal\\
+	% groß
+	\large Schriftgröße
+	\Large Schriftgröße
+	\LARGE Schriftgröße
+	\huge Schriftgröße
+	\Huge Schriftgröße groß\\
+	
+	% normal
+	\normalsize Schriftgröße normal\\
+\end{lstlisting}
+
+\clearpage
+\section{Schriftart - Schriftkodierung}
+
+\textit{Text kursiv}
+\textbf{Text fett}
+\emph{Text betonen}
+
+\textrm{Text in serifen}
+\textsf{Text in serifenlos}
+
+\texttt{Code}
+
+\textsc{Text in Kapitälchen} 
+\uppercase{Text in Großbuchstaben}
+
+\textcolor{rot5}{farbiger Text}
+
+\LaTeX -Syntax (vgl.~\ref{code:schriftart})
+
+\begin{lstlisting}[language=TeX,% C, TeX, Bash, Python
+caption={Schriftart},label={code:schriftart}%
+]-----Code einfügen---------------------------%
+	\textit{Text kursiv}
+	\textbf{Text fett}
+	\emph{Text betonen}
+	
+	\textrm{Text in serifen}
+	\textsf{Text in serifenlos}
+	
+	\texttt{Code}
+	
+	\textsc{Text in Kapitälchen} 
+	\uppercase{Text in Großbuchstaben}
+	
+	\textcolor{rot5}{farbiger Text}
+\end{lstlisting}

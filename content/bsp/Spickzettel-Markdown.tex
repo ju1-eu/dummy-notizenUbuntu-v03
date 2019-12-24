@@ -1,0 +1,147 @@
+%--- markdown---spickzettel
+\section{Markdown - Spickzettel}\label{markdown---spickzettel}
+
+%--- quellenangabe
+\subsection{Quellenangabe}\label{quellenangabe}
+
+Zitat: vgl. \cite{monk_action_buch:2016} u. \cite{kofler_linux:2017}
+
+%--- listen
+\subsection{Listen}\label{listen}
+
+\textbf{ungeordnete Liste}
+
+\begin{itemize}
+%--- Liste
+\item
+  a
+\item
+  b
+
+  \begin{itemize}
+  %--- Liste
+  \item
+    bb
+  \end{itemize}
+\item
+  c
+\end{itemize}
+
+\textbf{Sortierte Liste}
+
+\begin{enumerate}
+%--- sortierte
+%--- Liste
+\item
+  eins
+\item
+  zwei
+\item
+  drei
+\end{enumerate}
+
+\textbf{Sortierte Liste}
+
+\begin{enumerate}
+%--- sortierte
+%--- Liste
+\item
+  a
+\item
+  b
+\item
+  c
+\end{enumerate}
+
+%--- anfuehrungszeichen
+\subsection{Anführungszeichen}\label{anfuehrungszeichen}
+
+<<Anführungszeichen>> 
+
+%--- bilder---abbildungen
+\subsection{Bilder - Abbildungen}\label{bilder---abbildungen}
+
+%--- Abbildung
+%(vgl.~\ref{fig:}).%--- Referenz
+\begin{figure}[hb]% hier: htbp
+\centering
+\includegraphics[width=0.5\textwidth]{images/latex.pdf}
+\caption{Latex}
+%\label{fig:}%
+%--- Bildname
+\end{figure}
+
+%--- tabelle
+\subsection{Tabelle}\label{tabelle}
+
+% Tabelle
+%(vgl.~\ref{tab:}).%--- Referenz
+\begin{table}[ht]% hier: htbp    
+\centering
+\begin{tabular}{rll
+}% Ausrichten
+\toprule
+\textbf{Nr.} & \textbf{Begriffe} & \textbf{Erklärung} \\
+\midrule
+%--- Inhalt
+1 & a1 & a2 \\
+2 & b1 & b2 \\
+3 & c1 & c2 \\
+4 & a1 & a2 \\
+\bottomrule
+\end{tabular}
+%--- Tabellenname
+\caption{}%\label{tab:}%
+\end{table}
+
+%--- mathe
+\subsection{Mathe}\label{mathe}
+
+$[ V ] = [ \Omega ] \cdot [ A ]$ o. $U = R \cdot I$ o.
+$R = \frac{U}{I}$
+
+\textbf{Matheumgebung:}
+
+\begin{align*}
+    \sum_{i=1}^5 a_i = a_1 + a_2 + a_3 + a_4 + a_5
+\end{align*}
+
+%--- texthervorhebung
+\subsection{Texthervorhebung}\label{texthervorhebung}
+
+\textbf{Fett} oder \emph{Kursiv}
+
+%--- code
+\subsection{Code}\label{code}
+
+% Quellcode
+%(vgl.~\ref{code:}).%--- Referenz 
+\begin{lstlisting}[language=C,caption={},%label={code:}% C, TeX, Bash, Python
+]%--- Code einfügen
+
+    #include <stdio.h>
+    int main(void) {
+        printf("Hallo Welt!\n");
+        return 0;
+    }
+\end{lstlisting}
+
+%--- links
+\subsection{Links}\label{links}
+
+\url{https://google.de} oder \href{https://google.de}{Google}
+
+%--- absaetze
+\subsection{Absätze}\label{absaetze}
+
+Dies hier ist ein Blindtext zum Testen von Textausgaben. Wer diesen Text
+liest, ist selbst schuld. Der Text gibt lediglich den Grauwert der
+Schrift an. Ist das wirklich so? Ist es gleichgültig, ob ich schreibe:
+<<Dies ist ein Blindtext>>  oder <<Huardest gefburn>> ? Kjift -
+mitnichten! Ein Blindtext bietet mir wichtige Informationen.
+
+Dies hier ist ein Blindtext zum Testen von Textausgaben. Wer diesen Text
+liest, ist selbst schuld. Der Text gibt lediglich den Grauwert der
+Schrift an. Ist das wirklich so? Ist es gleichgültig, ob ich schreibe:
+<<Dies ist ein Blindtext>>  oder <<Huardest gefburn>> ? Kjift -
+mitnichten! Ein Blindtext bietet mir wichtige Informationen.

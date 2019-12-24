@@ -1,0 +1,146 @@
+% <!-- update: 24-Nov-19 -->
+\documentclass[b5paper,12pt,fleqn]{scrreprt} % <= Druckversion: "scrbook" / Bildschirmversion: "scrreprt"
+
+\newcommand\bcor{12mm} % <= Bindungskorrektur fuer Druckversion
+\KOMAoptions{open=right,headings=big,numbers=noenddot}
+\KOMAoptions{DIV=12,fontsize=11pt}
+
+
+\AtBeginDocument{\recalctypearea}
+\linespread{1.1}
+\widowpenalty10000
+\clubpenalty10000
+\tolerance1000
+
+
+\RequirePackage[automark]{scrlayer-scrpage}    % Define and manage page styles
+% headings
+\pagestyle{scrheadings}
+\automark[]{chapter}
+\automark*[section]{}
+
+% footnotes
+%\counterwithout*{footnote}{chapter}
+
+% Metadaten einlesen
+\input{content/metadata}
+% Pakete
+\include{content/praeambel}
+% Literatur laden
+\bibliography{content/literatur}%
+
+\makeindex %Initialisieren
+
+%% Kapitelueberschriften farbig
+\usepackage{sectsty}
+\chapterfont{\color{rot6}}
+\sectionfont{\color{rot6}}
+\subsectionfont{\color{rot6}}
+\subsubsectionfont{\color{rot6}}
+
+% PDF/A-1b-Konformitaet Optionen wichtig!
+%		pdftitle, pdfauthor, pdfsubject, pdfkeywords, pdfa	
+\hypersetup{% Setup fuer PDF-/Hypertext-Generierung + Metadaten
+	pdftitle={\titel},
+	pdfauthor={\autor},
+	pdfsubject={\typ},
+	pdfkeywords={\schlagwoerter},
+	pdflang=de,
+	bookmarks=true,
+	pdfdisplaydoctitle=true,
+	colorlinks=true,
+	plainpages=false,
+	%allcolors=black,
+	colorlinks=true,	   
+	linkcolor=blau5,		
+	filecolor=black,		
+	urlcolor=blau5,			
+	citecolor=black,	
+	hypertexnames=false,
+	pdfpagelabels=true,
+	hyperindex=true,
+	unicode=true,
+	pdfcaptionwriter={\autor},
+	pdfcontactcity={\ort},
+	pdfcontactcountry={Deutschland},
+	pdfcontactregion={NRW},
+	pdfcontacturl={\website},
+	pdfmetalang={de},
+	pdftex=true,             % bitte nicht aendern!
+	hypertexnames=false,     % bitte nicht aendern!
+	pdfa=true,  % bitte nicht aendern! NEU: PDF/A-flag
+	breaklinks=true,%
+	bookmarksnumbered=true,
+	breaklinks=true
+}
+
+\begin{document}
+\title{\titel}% Thema
+\author{\autor}
+%\date{\today}
+\date{2019/09/29}
+%\maketitle
+\begin{titlepage}
+	\centering 
+	\makebox[\textwidth][c]{
+		\includegraphics[width=.7\paperwidth]{Grafiken/titelbild-2.pdf}
+	}\\ [3ex] 
+  	{\Huge \bfseries \sffamily \titel }\\[3ex] 
+  	{\Large \sffamily \autor}          \\[3ex] 
+  	{\Large \sffamily \today}          \\[3ex]     		           
+		% Zusammenfassung
+		\vfill 
+		\input{content/zusammenfassung}
+		\vfill 
+
+	\qrcode[hyperlink,height=2.5em]{\website}	
+\end{titlepage}
+\thispagestyle{empty}
+
+% Introduction
+\newpage
+\pagenumbering{roman}
+\setcounter{page}{1}
+\setcounter{tocdepth}{2}
+\tableofcontents
+%\listoffigures
+%\listoftables
+%\lstlistoflistings
+\newpage
+\pagenumbering{arabic}
+
+%-----------------------
+	% Kapitel
+	\chapter{\titel}
+	%\input{content/LaTeX-Beispiel}
+	\input{inhalt}
+	
+	% Beispiel
+	%\input{content/bsp/Spickzettel-Latex-kap01}
+	%\clearpage
+	%\input{content/bsp/Spickzettel-Latex-kap02}
+	%\clearpage
+	%\input{content/bsp/Markdown-Code}
+	%\clearpage
+	%\input{content/bsp/vorlage_referenzen}
+	%\clearpage
+	%\input{content/bsp/vorlage_abbildungen}
+	%\clearpage
+	%\input{content/bsp/vorlage_tabelle}
+	%\clearpage
+	%\input{content/bsp/vorlage_tabelle_lang} %Fehler unter ubuntu!
+	%\clearpage
+	%\input{content/bsp/vorlage_code}
+	%\clearpage
+	%\input{content/bsp/vorlage_literaturangabe}
+	%\clearpage
+	%\input{content/bsp/vorlage_literaturangabe_laufen}
+	%\clearpage
+%-----------------------
+
+% Index (Register)
+\printindex 
+
+%\phantomsection\addcontentsline{toc}{chapter}{Literatur}
+\printbibliography% Verzeichnis drucken
+\end{document}

@@ -1,0 +1,29 @@
+\section{Vorlage - Abbildungen}\label{sec:vorlage_abb}
+
+Bildvorlage (vgl. Kap.~\ref{sec:vorlage_abb}).
+
+(vgl. Abb.~\ref{fig:bildname})
+\begin{figure}[hb]% hier: htbp
+	\centering
+	\includegraphics[width=0.2\textwidth]{content/bsp/logo.pdf}
+	%------------------------------------
+	\caption{Bildname}\label{fig:bildname}% 
+\end{figure}
+
+
+Zwei Bilder nebeneinander (vgl. Abb.~\ref{fig:subfigure}). 
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.2\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{content/bsp/logo.pdf}
+		\subcaption{Bild 1}	
+	\end{subfigure}
+	\begin{subfigure}[b]{0.2\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{content/bsp/logo.pdf}
+		\subcaption{Bild 2}
+	\end{subfigure}
+	\caption{Zwei Bilder nebeneinander}\label{fig:subfigure}
+\end{figure}
+
