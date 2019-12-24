@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# Letztes Update: 6-Apr-2019
+# letztes Update: 24-Dez-19
 # Markdown --> Latex & HTML5 & Wordpress"
 
 # variable

@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# Letztes Update: 25-Jun-2019
+# letztes Update: 24-Dez-19
 # Projekt erstellen
 
 # Variable

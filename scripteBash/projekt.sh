@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# Letztes Update: 21-Dez-19
+# letztes Update: 24-Dez-19
 #
 # Erstellt Websiten & \LaTeX PDFs mit Markdown und Pandoc.
 # sed passt die \LaTeX-Syntax an.

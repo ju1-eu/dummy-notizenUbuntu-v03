@@ -1,10 +1,9 @@
 #!/bin/bash -e
-# Letztes Update: 28-Jun-2019
+# letztes Update: 24-Dez-19
 # index.html u. html/websiten erstellen
 
 # Variable anpassen
 THEMA="dummy-Notiz-Ubuntu-v03"
-titel="Start"
 css="css/design.css"
 cms_lokal="cms-lokal"
 html="html"
@@ -17,12 +16,12 @@ timestamp=$(date +"%d-%h-%y")
 copyright="letztes Update: $timestamp"
 
 # ---------------------------------
-echo "+++ $info"
+echo "+ $info"
 
 T1="<!DOCTYPE html>
 <html><head>
 	<meta charset=\"utf-8\"/>
-	<title>$titel</title><!-- Titel u. Beschreibung anpassen-->
+	<title>$THEMA</title><!-- Titel u. Beschreibung anpassen-->
 	<meta name=\"description\" content=\"Beschreibung\" />
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=yes\" />
 	<style type=\"text/css\">

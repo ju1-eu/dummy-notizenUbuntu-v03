@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# Letztes Update: 14-Apr-2019
+# letztes Update: 24-Dez-19
 # PDF erstellen - pdflatex: tex -> pdf
 
 # ANPASSEN
@@ -24,8 +24,8 @@ archiv="archiv"
 excel="excel"
 content="content"
 timestamp=$(date +"%Y-%h-%d")
-timestamp_2=$(date +"%d-%h-%Y")
-copyright="ju - Letztes Update: $timestamp_2"
+timestamp_2=$(date +"%d-%h-%y")
+copyright="letztes Update: $timestamp_2"
 
 # -------------------------------
 echo "+++ $info"
@@ -33,7 +33,7 @@ echo "+++ $info"
 # pdflatex: Latex --> PDF
 
 # -------------------------------
-ID="v$(git rev-parse --short HEAD)"  # Version: v42c3f88
+ID="$(git rev-parse --short HEAD)"  # Version: v42c3f88
 DATUM=$(date +"%Y/%m/%d")            # Datum: 2019/06/27
 
 
@@ -124,10 +124,10 @@ timestamp_3=$(date +"%d%m%y")
 ID=$(git rev-parse --short HEAD)
 
 cd $tex
-tar cvfz ../$archiv/$timestamp_3'_Handarbeit-'$tex'_v'$ID.tgz .
+tar cvfz ../$archiv/$timestamp_3'_Handarbeit-'$tex'_v_'$ID.tgz .
 cd ..
 cd $md
-tar cvfz ../$archiv/$timestamp_3'_Handarbeit-'$md'_v'$ID.tgz .
+tar cvfz ../$archiv/$timestamp_3'_Handarbeit-'$md'_v_'$ID.tgz .
 cd ..
 
 echo "fertig"

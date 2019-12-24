@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# Letztes Update: 21-Dez-19
+# letztes Update: 24-Dez-19
 # pdfname - Suchen und Ersetzen anpassen
 
 # Shell: >_

@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# Letztes Update: 15-Feb-2019
+# letztes Update: 24-Dez-19
 # optimiere Bilder für das Web & Latex
 
 #- quer: 1600x1200 

@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# Letztes Update: 26-Jub-2019
+# letztes Update: 24-Dez-19
 
 # suchen und ersetzen: sed -i '/suchen/ s//ersetzen/g' "$i"
 # loeschen:            sed -i '/suchen/d' "$i"

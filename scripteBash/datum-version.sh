@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# Letztes Update: 28-Jun-2019
+# letztes Update: 24-Dez-19
 
 # suchen und ersetzen
   # content/metadata.tex

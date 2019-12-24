@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# Letztes Update: 21-Dez-19
+# letztes Update: 24-Dez-19
 
 # alte Notizen nach neue Notizen kopieren
 # Repository dummy-notizenUbuntu-v03
