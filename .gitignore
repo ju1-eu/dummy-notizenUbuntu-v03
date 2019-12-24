@@ -30,6 +30,7 @@ a_*.pdf
 a_*.tex
 !README.pdf
 !work_files/
+!html/
 #*.jpg
 #*.png
 #*.svg
@@ -52,7 +53,7 @@ Projekt-files.tex
 Quellcode-files.tex
 cms-lokal/
 cms-server/
-html/
+
 
 
 # Latex
