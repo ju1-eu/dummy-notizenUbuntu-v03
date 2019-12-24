@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# letztes Update: 24-Dez-19
+# Letztes Update: 21-Dez-19
 
 # alte Notizen nach neue Notizen kopieren
 # Repository dummy-notizenUbuntu-v03
@@ -77,8 +77,9 @@ archiv="archiv"
 
 # Kopie von wichtigen VERZEICHNISSEN
 code="code"
-img="img"
+img="images"
 md="md"
+tex="tex"
 tabellen="Tabellen"
 work_files="work_files"
 grafiken="Grafiken"
@@ -90,13 +91,13 @@ tex="tex"
 pdf="pdf"
 content="content"
 
-TIMESTAMP=$(date +"%d-%h-%Y")
+TIMESTAMP=$(date +"%d-%h-%y")
 
 echo "+----------------------------------------"
 echo "+ alte Notizen nach neue Notizen kopieren"
 echo "+----------------------------------------"
 
-cd $work
+#cd $work
 
 #if [ ! -d ./$archiv ]; then mkdir -p ./$archiv; fi
 
@@ -152,19 +153,14 @@ done < $work/liste.txt
 while read ordnername; do
   #echo "$ordnername";
   THEMA=$ordnername
-  echo "#---------------------"
-  echo "rsync $alt/$THEMA/$code/ $neu/$THEMA/$code/"
-  rsync -a $alt/$THEMA/$code/ $neu/$THEMA/$code/
-  echo "rsync $alt/$THEMA/$img/ $neu/$THEMA/$img/"
-  rsync -a $alt/$THEMA/$img/ $neu/$THEMA/$img/
-  echo "rsync $alt/$THEMA/$md/ $neu/$THEMA/$md/"
-  rsync -a $alt/$THEMA/$md/ $neu/$THEMA/$md/
-  echo "rsync $alt/$THEMA/$grafiken/ $neu/$THEMA/$grafiken/"
-  rsync -a $alt/$THEMA/$grafiken/ $neu/$THEMA/$grafiken/
-  echo "rsync $alt/$THEMA/$tabellen/ $neu/$THEMA/$tabellen/"
-  rsync -a $alt/$THEMA/$tabellen/ $neu/$THEMA/$tabellen/
-  echo "rsync $alt/$THEMA/$work_files/ $neu/$THEMA/$work_files/"
-  rsync -a $alt/$THEMA/$work_files/ $neu/$THEMA/$work_files/
+  rsync -a $work/$alt/$THEMA/$code/ $work/$neu/$THEMA/$code/
+  rsync -a $work/$alt/$THEMA/$img/ $work/$neu/$THEMA/$img/
+  rsync -a $work/$alt/$THEMA/$md/ $work/$neu/$THEMA/$md/
+  rsync -a $work/$alt/$THEMA/$tex/ $work/$neu/$THEMA/$tex/
+  rsync -a $work/$alt/$THEMA/$work_files/ $work/$neu/$THEMA/$work_files/
+  rsync -a $work/$alt/$THEMA/$grafiken/ $work/$neu/$THEMA/$grafiken/
+  rsync -a $work/$alt/$THEMA/$tabellen/ $work/$neu/$THEMA/$tabellen/
+  echo "#----rsync $ordnername fertig"
 done < $work/liste.txt
 
 
@@ -172,28 +168,29 @@ done < $work/liste.txt
 #----------------------------------------------------
 cd $neu/
 # liste.txt zeilenweise lesen
+ls
 while read ordnername; do
   #echo "$ordnername";
   THEMA=$ordnername
-  echo "#---------------------"
+  echo "#-----$ordnername"
   cd ./$THEMA
 
   # projekt erstellen
   if [ $NEUE_NOTIZEN_TRUE -eq 1 ]; then
     # Scriptaufruf  
-    ../../$scripte/projekterstellen.sh
-    ../../$scripte/markdownLatexHtml.sh
-    ../../$scripte/sed.sh
+    $work/$scripte/projekterstellen.sh
+    $work/$scripte/markdownLatexHtml.sh
+    $work/$scripte/sed.sh
     rsync -a $tex_pandoc/ $tex
-    ../../$scripte/inputImgMarkdown.sh
-    ../../$scripte/inputKapitelLatex.sh
-    ../../$scripte/inputPdfsLatex.sh
-    ../../$scripte/projektFiles.sh
-    ../../$scripte/projektInhalt.sh
-    ../../$scripte/codeFiles.sh
+    $work/$scripte/inputImgMarkdown.sh
+    $work/$scripte/inputKapitelLatex.sh
+    $work/$scripte/inputPdfsLatex.sh
+    $work/$scripte/projektFiles.sh
+    $work/$scripte/projektInhalt.sh
+    $work/$scripte/codeFiles.sh
 
     # Websiten
-    ../../$scripte/www.sh
+    $work/$scripte/www.sh
   fi
   # Git Version
   #----------------------------------------------------
@@ -240,7 +237,7 @@ while read ordnername; do
     # PDFs book + Artikel erstellen (book.pdf) - Archiv (tex)
     if [ -d $tex ]; then 
       if [ `ls -a  $tex | wc -l` -gt 2 ]; then
-        ../../$scripte/datum-version.sh
+        $work/$scripte/datum-version.sh
 
         # PDFs book + Artikel erstellen mit latexmk
         # artikel
@@ -257,7 +254,7 @@ while read ordnername; do
           basename=${a%.*}
           # schreibe jeweils in datei
           artikel="$basename.tex"
-          echo "% $copyright" > $artikel
+          echo "% %TIMESTAMP" > $artikel
           cat $content/$dummyArtikel >> $artikel
 
           # Kapitel: \input{inhalt}
@@ -277,14 +274,14 @@ while read ordnername; do
         #ls $content/$dummyBook
         # schreibe in datei
         book="main-book"
-        echo "% $copyright" > $book.tex
+        echo "% %TIMESTAMP" > $book.tex
         cat $content/$dummyBook >> $book.tex
         latexmk -f -pdf  $book.tex
         cp $book.pdf  $pdf/
 
         echo "pdfVersionen.sh"
-        #../../$scripte/pdfErstellen.sh
-        ../../$scripte/pdfVersionen.sh
+        #$work/$scripte/pdfErstellen.sh
+        $work/$scripte/pdfVersionen.sh
 
         # Latex aufraeumen
         rm -f *~ *.aux *.bbl *.blg *.fls *.log *.nav *.out *.snm *.synctex *.toc \
@@ -297,8 +294,6 @@ while read ordnername; do
     fi
     
   fi
-  
-
   # Git Version
   #----------------------------------------------------
   #repos_USB="/media/jan/usb/repos/notizenUbuntu"    
@@ -423,9 +418,9 @@ while read ordnername; do
     ID=$(git rev-parse --short HEAD) # git commit (hashwert) = id
 
     # 010719_THEMA_v080fed9.tgz
-    tar cvzf $archiv_HD/$timestamp_3'_'$THEMA'_v'$ID.tgz .
-    tar cvzf $archiv_USB/$timestamp_3'_'$THEMA'_v'$ID.tgz .
-    #tar cvzf $archiv_RPI$/$timestamp_3'_'$THEMA'_v'$ID.tgz .
+    tar cvzf $archiv_HD/$timestamp_3'_'$THEMA'_v_'$ID.tgz .
+    tar cvzf $archiv_USB/$timestamp_3'_'$THEMA'_v_'$ID.tgz .
+    #tar cvzf $archiv_RPI$/$timestamp_3'_'$THEMA'_v_'$ID.tgz .
 
     echo "+ Archiv ($archiv_HD/) fertig."
     echo "+ Archiv ($archiv_USB/) fertig."

@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# letztes Update: 24-Dez-19
+# Letztes Update: 21-Dez-19
 #
 # Erstellt Websiten & \LaTeX PDFs mit Markdown und Pandoc.
 # sed passt die \LaTeX-Syntax an.
@@ -33,7 +33,7 @@
 #scripte/sed.sh
 #  - codelanguage:    HTML5, Python, Bash, C, C++, TeX
 #  - CMS Server Pfad: https://www.ju1.eu/#
-#  - Bildformat:      pdf, svg, png, jpg
+#  - Bildformat:      pdf, svg, png, jpg, webp
 
 #projekt.sh
 #  - Backupverzeichnis

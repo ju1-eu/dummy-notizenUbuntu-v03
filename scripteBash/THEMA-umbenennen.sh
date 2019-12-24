@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# letztes Update: 24-Dez-19
+# Letztes Update: 21-Dez-19
 # THEMA - Suchen und Ersetzen anpassen
 
 # Github Repository downloaden
@@ -35,7 +35,7 @@ clear
 #------------------------------------------------------
 
 code="code"
-img="img"
+img="images"
 md="md"
 tex="tex"
 tabellen="Tabellen"
@@ -43,8 +43,8 @@ work_files="work_files"
 grafiken="Grafiken"
 
 
-verz_alt="alt"
-verz_neu="neu"
+alt="alt"
+neu="neu"
 work="/home/jan/tex"
 cd $work
 
@@ -62,7 +62,7 @@ if [ -z "$antwort" ]; then
 fi
 if [ "$antwort" == "j" ]; then
   echo "#---------------------"
-  cd $work/$verz_neu
+  cd $work/$neu
   if [ -d $THEMA ]; then rm -rf $THEMA; fi
 
   # Backup Repository
@@ -76,7 +76,7 @@ if [ "$antwort" == "j" ]; then
     echo "Keine Eingabe"
   fi
   if [ "$antwort" == "j" ]; then
-    cd $work/$verz_neu
+    cd $work/$neu
     echo "#---------------------"
     # suchen und ersetzen
     # anpassen
@@ -104,7 +104,7 @@ if [ "$antwort" == "j" ]; then
     echo "#---------------------"
 
     # git init
-    cd $work/$verz_neu/$THEMA
+    cd $work/$neu/$THEMA
 		rm -rf .git
 		git init
 		git add .
@@ -139,13 +139,13 @@ if [ "$antwort" == "j" ]; then
   # Kopie
   cd $work
   # Option: -u	überspringt Dateien, die im Ziel neuer sind als in der Quelle
-  rsync -av $verz_alt/$THEMA/$code/ $verz_neu/$THEMA/$code/
-  rsync -av $verz_alt/$THEMA/$img/ $verz_neu/$THEMA/$img/
-  rsync -av $verz_alt/$THEMA/$md/ $verz_neu/$THEMA/$md/
-  rsync -av $verz_alt/$THEMA/$tex/ $verz_neu/$THEMA/$tex/
-  rsync -av $verz_alt/$THEMA/$work_files/ $verz_neu/$THEMA/$work_files/
-  rsync -av $verz_alt/$THEMA/$grafiken/ $verz_neu/$THEMA/$grafiken/
-  rsync -av $verz_alt/$THEMA/$tabellen/ $verz_neu/$THEMA/$tabellen/
+  rsync -a $work/$alt/$THEMA/$code/ $work/$neu/$THEMA/$code/
+  rsync -a $work/$alt/$THEMA/$img/ $work/$neu/$THEMA/$img/
+  rsync -a $work/$alt/$THEMA/$md/ $work/$neu/$THEMA/$md/
+  rsync -a $work/$alt/$THEMA/$tex/ $work/$neu/$THEMA/$tex/
+  rsync -a $work/$alt/$THEMA/$work_files/ $work/$neu/$THEMA/$work_files/
+  rsync -a $work/$alt/$THEMA/$grafiken/ $work/$neu/$THEMA/$grafiken/
+  rsync -a $work/$alt/$THEMA/$tabellen/ $work/$neu/$THEMA/$tabellen/
 else
   echo "Ende"
 fi
@@ -153,7 +153,7 @@ fi
 echo "#--------------------------------------------------------"
 echo "+ Erste Schritte"
 echo "
-$ cd $verz_neu/$THEMA
+$ cd $neu/$THEMA
 
 # anpassen
 scripte/sed.sh
