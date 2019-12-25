@@ -322,7 +322,7 @@ elif [ $a -eq 13 ]; then
 		  echo "$backup_HD Laufwerk mounten."
 		else
 		  # backup 
-		  rsync -a --delete ./ $backup_HD/$THEMA/
+		  rsync -av --delete ./ $backup_HD/$THEMA/
 		fi
 
 		# Laufwerk vorhanden?
@@ -338,16 +338,16 @@ elif [ $a -eq 13 ]; then
 		  echo "$backup_USB Laufwerk mounten."
 		else
 		  # backup 
-		  rsync -a --delete ./ $backup_HD/$THEMA/
+		  rsync -av --delete ./ $backup_USB/$THEMA/
 		fi
 
 	  # archiv
 		timestamp_3=$(date +"%d%m%y")
 		ID=$(git rev-parse --short HEAD) # git commit (hashwert) = id
 		
-		tar cvzf $archiv_HD/$timestamp_3'_'$THEMA'_v'$ID.tgz .
+		#tar cvzf $archiv_HD/$timestamp_3'_'$THEMA'_v'$ID.tgz .
 		#tar cvzf $archiv_RPI4/$timestamp_3'_'$THEMA'_v'$ID.tgz .
-		tar cvzf $archiv_USB/$timestamp_3'_'$THEMA'_v'$ID.tgz .
+		#tar cvzf $archiv_USB/$timestamp_3'_'$THEMA'_v'$ID.tgz .
 
 		#tar cvzf ../$timestamp_3'_'$THEMA'_v'$ID.tgz .
 		#tar cvzf ../$THEMA.tgz .
@@ -357,9 +357,9 @@ elif [ $a -eq 13 ]; then
 	  #zip -r $archiv_HD/$THEMA.zip .
 
 		echo "# ----------------------------------------------"
-	  echo "+ Archiv ($archiv_HD/)"
+	  #echo "+ Archiv ($archiv_HD/)"
 		echo "+ Backup ($backup_HD/)"
-	  echo "+ Archiv ($archiv_USB/)"
+	  #echo "+ Archiv ($archiv_USB/)"
 		echo "+ Backup ($backup_USB/)"
 		#echo "+ Archiv ($archiv_RPI4/)"
 		#echo "+ Backup ($backup_RPI4/)"
