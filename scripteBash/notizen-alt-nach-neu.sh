@@ -244,7 +244,6 @@ while read ordnername; do
     if [ -d $tex ]; then 
       if [ `ls -a  $tex | wc -l` -gt 2 ]; then
         $work/$scripte/datum-version.sh
-
         # PDFs book + Artikel erstellen mit latexmk
         # artikel
         array=$(ls $tex)
@@ -259,8 +258,8 @@ while read ordnername; do
           #echo ${a%.*}
           basename=${a%.*}
           # schreibe jeweils in datei
-          artikel="$basename.tex"
-          echo "% %TIMESTAMP" > $artikel
+          artikel="a_$basename.tex"
+          echo "% $copyright" > $artikel
           cat $content/$dummyArtikel >> $artikel
 
           # Kapitel: \input{inhalt}
@@ -271,23 +270,38 @@ while read ordnername; do
           sed -i "s/$suchen_sed_reg/$ersetzen/g" "$artikel"
 
           # latexmk
-          latexmk -f -pdf $basename.tex
-          cp $basename.pdf  $pdf/
+          latexmk -f -pdf a_$basename.tex
         done
 
-        # book
-        #dummyBook="main-book-dummy.tex"
-        #ls $content/$dummyBook
-        # schreibe in datei
-        #book="main-book"
-        #echo "% %TIMESTAMP" > $book.tex
-        #cat $content/$dummyBook >> $book.tex
-        #latexmk -f -pdf  $book.tex
-        #cp $book.pdf  $pdf/
+      # book
+      dummyBook="main-book-dummy.tex"
+      #ls $content/$dummyBook
+      # schreibe in datei
+      book="main-book"
+      echo "% $copyright" > $book.tex
+      cat $content/$dummyBook >> $book.tex
 
-        # Latex aufraeumen
-        rm -f *~ *.aux *.bbl *.blg *.fls *.log *.nav *.out *.snm *.synctex *.toc \
-          *.idx *.ilg *.ind *.thm *.lof *.lol *.lot *.nlo *.run.xml *blx.bib *.bcf
+      # latexmk
+      latexmk -f -pdf $book
+
+      # print
+      dummyPrint="main-print-dummy.tex"
+      #ls $content/$dummyPrint
+      # schreibe in datei
+      print="main-print"
+      echo "% $copyright" > $print.tex
+      cat $content/$dummyPrint >> $print.tex
+
+      # latexmk
+      latexmk -f -pdf $print
+
+
+		  # Latex aufraeumen
+		  rm -f *~ *.aux *.bbl *.blg *.fls *.log *.nav *.out *.snm *.synctex *.toc \
+		    *.idx *.ilg *.ind *.thm *.lof *.lol *.lot *.nlo *.run.xml *blx.bib *.bcf
+
+		  cp a_*.pdf  $pdf/
+      cp main*.pdf $pdf/
 
 
       else
@@ -329,21 +343,16 @@ while read ordnername; do
     #git tag
     git tag v1.0 # release
 
-
+    # PDF-Versionen erstellen
     echo "pdfVersionen.sh"
-    #$work/$scripte/pdfErstellen.sh
-    $work/$scripte/pdfVersionen.sh
+    # Scriptaufruf
+		$work/$scripte/datum-version.sh
+		#$work/$scripte/pdfErstellen.sh
+		$work/$scripte/pdfVersionen.sh
 
     # Latex aufraeumen
     rm -f *~ *.aux *.bbl *.blg *.fls *.log *.nav *.out *.snm *.synctex *.toc \
       *.idx *.ilg *.ind *.thm *.lof *.lol *.lot *.nlo *.run.xml *blx.bib *.bcf
-
-    echo "update: $TIMESTAMP" > git.log
-    echo "+----------------------------------------" >> git.log
-    git lg >> git.log
-    echo "+----------------------------------------" >> git.log
-    git status >> git.log
-    echo "+----------------------------------------" >> git.log
 
     # Backup Repository: backup/master  
     REPOSITORY_NEU="$THEMA"
@@ -358,6 +367,13 @@ while read ordnername; do
         git push --all $LESEZEICHEN
         echo "Backup Repository auf USB"
     fi
+
+    echo "update: $TIMESTAMP" > git.log
+    echo "+----------------------------------------" >> git.log
+    git lg >> git.log
+    echo "+----------------------------------------" >> git.log
+    git status >> git.log
+    echo "+----------------------------------------" >> git.log
     
   fi
  
