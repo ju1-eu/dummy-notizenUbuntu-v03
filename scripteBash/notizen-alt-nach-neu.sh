@@ -45,7 +45,7 @@ clear
   NEUE_NOTIZEN_TRUE=1     # gibt es neue Notizen?
   REPOSITORY_dummy_TRUE=1 # Backup Repository erstellen?
   GIT_Vers_TRUE=1        # git versionen anlegen?
-  ARCHIV_TRUE=1         # archivieren ?
+  ARCHIV_TRUE=0         # archivieren ?
   BACKUP_HD_TRUE=1      # backup auf HD anlegen ?
   BACKUP_USB_TRUE=1     # backup auf USB anlegen ?
   #BACKUP_RPI4_TRUE=1    # backup auf RPI$ anlegen ?
@@ -119,8 +119,14 @@ while read ordnername; do
   #echo "$ordnername";
   THEMA=$ordnername
   if [ -d $neu/$THEMA ]; then rm -rf $neu/$THEMA; fi
+  # Backup Repository
   echo "Repository clonen"
   git clone $repos_HD/$REPOSITORY.git $neu/$THEMA/
+  # Github Repository downloaden
+  #REPOSITORY="dummy-notizenUbuntu-v03"
+  #ADRESSE="git@github.com:ju1-eu"
+  #git clone $ADRESSE/$REPOSITORY.git $neu/$THEMA/
+  
 done < $work/liste.txt
 
 # THEMA: suchen und ersetzen
@@ -270,18 +276,14 @@ while read ordnername; do
         done
 
         # book
-        dummyBook="main-book-dummy.tex"
+        #dummyBook="main-book-dummy.tex"
         #ls $content/$dummyBook
         # schreibe in datei
-        book="main-book"
-        echo "% %TIMESTAMP" > $book.tex
-        cat $content/$dummyBook >> $book.tex
-        latexmk -f -pdf  $book.tex
-        cp $book.pdf  $pdf/
-
-        echo "pdfVersionen.sh"
-        #$work/$scripte/pdfErstellen.sh
-        $work/$scripte/pdfVersionen.sh
+        #book="main-book"
+        #echo "% %TIMESTAMP" > $book.tex
+        #cat $content/$dummyBook >> $book.tex
+        #latexmk -f -pdf  $book.tex
+        #cp $book.pdf  $pdf/
 
         # Latex aufraeumen
         rm -f *~ *.aux *.bbl *.blg *.fls *.log *.nav *.out *.snm *.synctex *.toc \
@@ -327,7 +329,21 @@ while read ordnername; do
     #git tag
     git tag v1.0 # release
 
-    
+
+    echo "pdfVersionen.sh"
+    #$work/$scripte/pdfErstellen.sh
+    $work/$scripte/pdfVersionen.sh
+
+    # Latex aufraeumen
+    rm -f *~ *.aux *.bbl *.blg *.fls *.log *.nav *.out *.snm *.synctex *.toc \
+      *.idx *.ilg *.ind *.thm *.lof *.lol *.lot *.nlo *.run.xml *blx.bib *.bcf
+
+    echo "update: $TIMESTAMP" > git.log
+    echo "+----------------------------------------" >> git.log
+    git lg >> git.log
+    echo "+----------------------------------------" >> git.log
+    git status >> git.log
+    echo "+----------------------------------------" >> git.log
 
     # Backup Repository: backup/master  
     REPOSITORY_NEU="$THEMA"
@@ -342,19 +358,6 @@ while read ordnername; do
         git push --all $LESEZEICHEN
         echo "Backup Repository auf USB"
     fi
-
-    #if [ -d $repos_RPI4/$REPOSITORY_NEU.git ]; then
-    #    LESEZEICHEN="backupRPI4"
-    #    git push --all $LESEZEICHEN
-    #    echo "Backup Repository auf RPI4"
-    #fi
-
-    echo "update: $TIMESTAMP" > git.log
-    echo "+----------------------------------------" >> git.log
-    git lg >> git.log
-    echo "+----------------------------------------" >> git.log
-    git status >> git.log
-    echo "+----------------------------------------" >> git.log
     
   fi
  

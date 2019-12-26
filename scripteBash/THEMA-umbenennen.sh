@@ -69,11 +69,11 @@ if [ "$antwort" == "j" ]; then
   if [ -d $THEMA ]; then rm -rf $THEMA; fi
 
   # Backup Repository
-  #git clone $repos_HD/$REPOSITORY.git $THEMA
+  git clone $repos_HD/$REPOSITORY.git $THEMA
   # Github Repository downloaden
-  REPOSITORY="dummy-notizenUbuntu-v03"
-  ADRESSE="git@github.com:ju1-eu"
-  git clone $ADRESSE/$REPOSITORY.git $THEMA
+  #REPOSITORY="dummy-notizenUbuntu-v03"
+  #ADRESSE="git@github.com:ju1-eu"
+  #git clone $ADRESSE/$REPOSITORY.git $THEMA
 
 
   echo "#---------------------"
