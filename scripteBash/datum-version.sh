@@ -3,7 +3,6 @@
 
 # suchen und ersetzen
   # content/metadata.tex
-  # content/titlepage-book.tex titlepage-print.tex titlepage-beamer.tex
     # suche:    DATUM-ID
     # ersetzte: 2019/06/27 - v_42c3f88
 

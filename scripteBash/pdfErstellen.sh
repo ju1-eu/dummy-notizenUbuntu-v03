@@ -98,8 +98,8 @@ pdflatex $print.tex
 
 # -------------------------------
 # latexmk
-#latexmk -f -pdf main-book
-#latexmk -f -pdf main-print
+#latexmk -f -pdf $book
+#latexmk -f -pdf $print
 
 
 # -------------------------------
@@ -110,9 +110,9 @@ rm -f *~ *.aux *.bbl *.blg *.fls *.log *.nav *.out *.snm *.synctex *.toc \
 # -------------------------------
 # kopie
 # Datei umbenennen
-cp -Rp "$book".pdf          $pdf/$THEMA.pdf
-#cp -Rp "$print".pdf         $pdf/$THEMA-print.pdf
-mv main*.pdf                    $pdf/
+cp -Rp "$book".pdf     $pdf/$THEMA-book.pdf
+cp -Rp "$print".pdf   $pdf/$THEMA-print.pdf
+mv main*.pdf   $pdf/
 
 # Scriptaufruf
 ./$scripte/projektInhalt.sh
