@@ -33,14 +33,15 @@ cd $pdf/
 printf "# -------------------------------\n"   >  $file
 printf "# PDF: 				    '$filename1'   \n"   >> $file
 printf "# Datum: 			  	'$timestamp_2' \n"   >> $file
+printf "# -------------------------------\n"   >>  $file
 
 if [ ! -e "$filename1".pdf  ]; then echo "Fehler: '$filename1'.pdf nicht vorhanden."; exit; fi
 # build - Versionen erstellen - 260619_main-book_v0b61478.pdf
 fileVers=$timestamp_3'_'$filename1'_v_'$ID".pdf"
 echo $fileVers
 cp $filename1".pdf" $fileVers
-echo $fileVers    >> $file
-printf "\n# md5sum - Prüfsumme\n"           >> $file
+printf "\n\n$ md5sum $fileVers"    >> $file
+printf "\n\n# md5sum - Prüfsumme\n"           >> $file
 #hashwert
 md5sum $fileVers  >> $file
 
