@@ -395,10 +395,8 @@ elif [ $a -eq 13 ]; then
 	elif [ $a -eq 15 ]; then
 		# Sind die PDFs up-to-date?
 		# latexmk
-		print="main-print"
-		latexmk -f -pdf $print
-		print="main-book"
-		latexmk -f -pdf $book
+		latexmk -f -pdf main-book
+		latexmk -f -pdf main-print
 	# --------------------
 	else
 		echo "+++ $info"
