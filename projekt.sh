@@ -326,14 +326,6 @@ elif [ $a -eq 13 ]; then
 		fi
 
 		# Laufwerk vorhanden?
-		#if [ ! -d $backup_RPI4 ]; then
-		#  echo "$backup_RPI4 Laufwerk mounten."
-		#else
-		#  # backup 
-		#  rsync -a --delete ./ $backup_HD/$THEMA/
-		#fi
-
-		# Laufwerk vorhanden?
 		if [ ! -d $backup_USB ]; then
 		  echo "$backup_USB Laufwerk mounten."
 		else
@@ -345,21 +337,23 @@ elif [ $a -eq 13 ]; then
 		timestamp_3=$(date +"%d%m%y")
 		ID=$(git rev-parse --short HEAD) # git commit (hashwert) = id
 		
-		#tar cvzf $archiv_HD/$timestamp_3'_'$THEMA'_v'$ID.tgz .
-		#tar cvzf $archiv_RPI4/$timestamp_3'_'$THEMA'_v'$ID.tgz .
-		#tar cvzf $archiv_USB/$timestamp_3'_'$THEMA'_v'$ID.tgz .
+		#tar cvzf $archiv_HD/$timestamp_3'_'$THEMA'_v_'$ID.tgz .
+		#tar cvzf $archiv_RPI4/$timestamp_3'_'$THEMA'_v_'$ID.tgz .
+		#tar cvzf $archiv_USB/$timestamp_3'_'$THEMA'_v_'$ID.tgz .
 
 		#tar cvzf ../$timestamp_3'_'$THEMA'_v'$ID.tgz .
 		#tar cvzf ../$THEMA.tgz .
 	  #rm -rf ../$THEMA.zip
 	  #zip -r ../$THEMA.zip .
-		#rm -rf $archiv_ssd/$THEMA.zip
-	  #zip -r $archiv_HD/$THEMA.zip .
+		rm -rf $archiv_HD/$THEMA.zip
+	  zip -r $archiv_HD/$THEMA.zip .
+		rm -rf $archiv_USB/$THEMA.zip
+	  zip -r $archiv_USB/$THEMA.zip .
 
 		echo "# ----------------------------------------------"
-	  #echo "+ Archiv ($archiv_HD/)"
+	  echo "+ Archiv ($archiv_HD/)"
 		echo "+ Backup ($backup_HD/)"
-	  #echo "+ Archiv ($archiv_USB/)"
+	  echo "+ Archiv ($archiv_USB/)"
 		echo "+ Backup ($backup_USB/)"
 		#echo "+ Archiv ($archiv_RPI4/)"
 		#echo "+ Backup ($backup_RPI4/)"

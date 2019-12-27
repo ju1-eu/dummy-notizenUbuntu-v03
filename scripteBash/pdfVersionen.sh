@@ -1,9 +1,26 @@
 #!/bin/bash -e
-# letztes Update: 24-Dez-19
+# letztes Update: 27-Dez-19
 # PDF - Versionen erstellen
 
 # ANPASSEN
 pdfname="main-book"
+
+#------------------------------------------------------
+	# anpassen
+	THEMA="dummy-notizenUbuntu-v03"
+
+	backup_USB="/media/jan/usb/backup/notizenUbuntu"    
+	#backup_RPI4="smb://rpi4.local/nas/backup/notizenUbuntu" 
+	backup_HD="/media/jan/virtuell/backup/notizenUbuntu"
+
+	archiv_USB="/media/jan/usb/archiv/notizenUbuntu"    
+	#archiv_RPI4="smb://rpi4.local/nas/archiv/notizenUbuntu" 
+	archiv_HD="/media/jan/virtuell/archiv/notizenUbuntu"
+
+	repos_USB="/media/jan/usb/repos/notizenUbuntu"    
+	#repos_RPI4="smb://rpi4.local/nas/repos/notizenUbuntu" 
+	repos_HD="/media/jan/virtuell/repos/notizenUbuntu"
+#------------------------------------------------------
 
 # Variable
 info="PDF - Versionen erstellen"
@@ -49,5 +66,12 @@ mv  $fileVers ../$archiv/
 mv  $file ../$archiv/
 
 cd ..
+
+# archiv
+timestamp_3=$(date +"%d%m%y")
+ID=$(git rev-parse --short HEAD) # git commit (hashwert) = id
+
+tar cvzf $archiv_HD/$timestamp_3'_'$THEMA'_v_'$ID.tgz .
+tar cvzf $archiv_USB/$timestamp_3'_'$THEMA'_v_'$ID.tgz .
 
 echo "fertig"
