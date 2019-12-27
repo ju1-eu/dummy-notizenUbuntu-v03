@@ -216,11 +216,35 @@ while [ "$janein" -eq 1 ]; do
 		    latexmk -f -pdf a_$basename.tex
 		  done
 
+		  # book
+      dummyBook="main-book-dummy.tex"
+      #ls $content/$dummyBook
+      # schreibe in datei
+      book="main-book"
+      echo "% $copyright" > $book.tex
+      cat $content/$dummyBook >> $book.tex
+
+      # latexmk
+      latexmk -f -pdf $book
+
+      # print
+      dummyPrint="main-print-dummy.tex"
+      #ls $content/$dummyPrint
+      # schreibe in datei
+      print="main-print"
+      echo "% $copyright" > $print.tex
+      cat $content/$dummyPrint >> $print.tex
+
+      # latexmk
+      latexmk -f -pdf $print
+
+
 		  # Latex aufraeumen
 		  rm -f *~ *.aux *.bbl *.blg *.fls *.log *.nav *.out *.snm *.synctex *.toc \
 		    *.idx *.ilg *.ind *.thm *.lof *.lol *.lot *.nlo *.run.xml *blx.bib *.bcf
 
 		  cp a_*.pdf  $pdf/
+      cp main*.pdf $pdf/
 		else
 		  echo "Fehler: $tex/ leer; Schritt 1 bis 3 ausführen.";
 		fi
