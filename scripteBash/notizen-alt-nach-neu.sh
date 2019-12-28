@@ -74,6 +74,7 @@ work="/home/jan/tex"
 alt="alt"
 neu="neu"
 archiv="archiv"
+ebooks="ebooks"
 
 # Kopie von wichtigen VERZEICHNISSEN
 code="code"
@@ -187,19 +188,19 @@ while read ordnername; do
   # projekt erstellen
   if [ $NEUE_NOTIZEN_TRUE -eq 1 ]; then
     # Scriptaufruf  
-    $work/$scripte/projekterstellen.sh
-    $work/$scripte/markdownLatexHtml.sh
-    $work/$scripte/sed.sh
+    ./scripteBash/projekterstellen.sh
+    ./scripteBash/markdownLatexHtml.sh
+    ./scripteBash/sed.sh
     rsync -a $tex_pandoc/ $tex
-    $work/$scripte/inputImgMarkdown.sh
-    $work/$scripte/inputKapitelLatex.sh
-    $work/$scripte/inputPdfsLatex.sh
-    $work/$scripte/projektFiles.sh
-    $work/$scripte/projektInhalt.sh
-    $work/$scripte/codeFiles.sh
+    ./scripteBash/inputImgMarkdown.sh
+    ./scripteBash/inputKapitelLatex.sh
+    ./scripteBash/inputPdfsLatex.sh
+    ./scripteBash/projektFiles.sh
+    ./scripteBash/projektInhalt.sh
+    ./scripteBash/codeFiles.sh
 
     # Websiten
-    $work/$scripte/www.sh
+    ./scripteBash/www.sh
   fi
   # Git Version
   #----------------------------------------------------
@@ -305,7 +306,7 @@ while read ordnername; do
   fi
 
   # Websiten
-  $work/$scripte/www.sh
+  ./scripteBash/www.sh
 
   # Git Version
   #----------------------------------------------------
@@ -427,22 +428,25 @@ while read ordnername; do
 done < $work/liste.txt
 cd ..
 
+# suche alle ebooks
+find $neu/*/$pdf/ -name '*book.pdf' -exec cp {} $ebooks/  \;
 
- echo "# ----------------------------------------------"
- echo "+ Ordner 'neu/' erstellen"
- echo "+ Repository clonen"
- echo "+ THEMA: suchen und ersetzen"
- echo "+ Kopie von wichtigen VERZEICHNISSEN"
- echo "+ Projekt erstellen - Markdown -> html + LaTeX - Suchen und Ersetzen"
- echo "+ git init - neues Repository erstellen"
- echo "+ PDF Datum - Version setzen"
- echo "+ PDFs erstellen"
- echo "+ Websiten erstellen"
- echo "+ Git - Versionieren"
- echo "+ Backup"
- echo "+ Archiv"
- echo "# ----------------------------------------------"
- echo "rsync -a alt/ neu/"
- echo "# ----------------------------------------------"
+echo "# ----------------------------------------------"
+echo "+ rsync -a alt/ neu/"
+echo "+ Ordner 'neu/' erstellen"
+echo "+ Repository clonen"
+echo "+ THEMA: suchen und ersetzen"
+echo "+ Kopie von wichtigen VERZEICHNISSEN"
+echo "+ Projekt erstellen - Markdown -> html + LaTeX - Suchen und Ersetzen"
+echo "+ git init - neues Repository erstellen"
+echo "+ PDF Datum - Version setzen"
+echo "+ PDFs erstellen"
+echo "+ Websiten erstellen"
+echo "+ Git - Versionieren"
+echo "+ Backup"
+echo "+ Archiv"
+echo "# ----------------------------------------------"
+echo "+ alle ebooks im Ordner ebooks/"
+echo "# ----------------------------------------------"
 
 echo "Script beendet."

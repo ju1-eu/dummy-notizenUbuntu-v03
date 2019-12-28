@@ -3,7 +3,7 @@
 # index.html u. html/websiten erstellen
 
 # Variable anpassen
-THEMA="dummy-Notiz-Ubuntu-v03"
+THEMA="dummy-notizenUbuntu-v03"
 css="css/design.css"
 cms_lokal="cms-lokal"
 html="html"
@@ -113,20 +113,6 @@ for i in *.svg; do
 done
 
 echo "$html/alle-pics.html wurde erstellt"
-
-for i in *.pdf; do
-	# Dateiname ohne Endung
-	filename=`basename "$i" .pdf` # anpassen
-
-	# html/alle-pics.html
-	echo "	<!-- Abb. $n -->
-	<p><a href=\"../$img/$i\">
-	  <figure>
-	    <figcaption>Abb. $n : $i</figcaption>
-	  </figure>
-	</a></p>" >> ../$html/$pics
-	((n+=1))
-done
 
 cd ..
 
