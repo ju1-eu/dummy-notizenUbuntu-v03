@@ -1,0 +1,602 @@
+%============================
+% Copyright Jan Unger, Wuppertal
+% erstellt: 22.12.16
+% update:   23.06.17
+%============================
+
+%============================
+% \chapter{Kapitel}
+%============================
+
+% 9.6.17
+
+\section{Mathe - LaTeX}\label{matheLatex}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+  \begin{align}
+
+  \end{align}
+\end{lstlisting}
+
+\subsection{Bruch}\label{bruch}\index{Bruch}
+
+\begin{align}
+	\frac{1}{3}
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+  \frac{1}{3}
+\end{lstlisting}
+
+
+\subsection{Indizes}\label{indizes}\index{Indizes}
+
+\begin{align}
+  a_1
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+  a_1
+\end{lstlisting}
+
+\subsection{Hochstellungen}\label{hochstellungen}\index{Hochstellungen}
+
+\begin{align}
+  a^2
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	a^2
+\end{lstlisting}
+
+
+\subsection{Summe}\label{summe}\index{Summe}
+
+\begin{align}
+  \sum \limits_{i=1}^n a_i
+		= a_1 + a_2 + a_3 + ... + a_n
+		= \frac{n(n+1)}{2}
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\sum \limits_{i=1}^n a_i
+			= a_1 + a_2 + a_3 + ... + a_n
+			= \frac{n(n+1)}{2}
+\end{lstlisting}
+
+
+\subsection{Produkte}\label{produkte}\index{Produkte}
+
+\begin{align}
+  a \cdot b \quad \text{oder} \quad
+  a \times b
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	a \cdot b \quad \text{oder} \quad
+  a \times b
+\end{lstlisting}
+
+
+\subsection{Binome}\label{binome}\index{Binome}
+
+\begin{align}
+  & a \choose b \\
+  & \binom{n}{k}
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	& a \choose b \\
+  & \binom{n}{k}
+\end{lstlisting}
+
+
+\subsection{Wurzeln}\label{wurzeln}\index{Wurzeln}
+
+\begin{align}
+  \sqrt{x} \quad \text{oder} \quad
+  \sqrt[n]{x}
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\sqrt{x} \quad \text{oder} \quad
+  \sqrt[n]{x}
+\end{lstlisting}
+
+
+\subsection{Limes}\label{limes}\index{Limes}
+
+\begin{align}
+  \lim\limits_{n \to \infty}\frac{1}{n}=0
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\lim\limits_{n \to \infty}\frac{1}{n}=0
+\end{lstlisting}
+
+
+\subsection{Sonderzeichen}\label{sonderzeichen}\index{Sonderzeichen}
+
+\begin{align}
+  1 \le 2 \ge 0 \neq 4 \\
+  1 \ll 10^{20} \gg 10^{-5} \\
+  \pm 5
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	1 \le 2 \ge 0 \neq 4 \\
+  1 \ll 10^{20} \gg 10^{-5} \\
+  \pm 5
+\end{lstlisting}
+
+
+\subsection{Formel}\label{formel }\index{Formel }
+
+Formel $P = \frac{W}{t}$ im Satz.
+
+\begin{align}% Text: \texttt{Mathe-Text}
+	Leistung &= Spannung \cdot Strom 	&& \left // \texttt{bündig Gleichheitszeichen} \right. \\
+	       P &= U \cdot I 										\\
+	   [ W ] &= [ V ] \cdot [ A ]
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	Formel $P = \frac{W}{t}$ im Satz.
+
+	Leistung &= Spannung \cdot Strom 	&& \left // \texttt{bündig Gleichheitszeichen} \right. \\
+	       P &= U \cdot I 										\\
+	   [ W ] &= [ V ] \cdot [ A ]
+\end{lstlisting}
+
+
+\begin{align}% Text: \texttt{Mathe-Text}
+& Leistung = Spannung \cdot Strom && \left // \texttt{linksbündig} \right. \\
+& P = U \cdot I 										\\
+& [ W ] = [ V ] \cdot [ A ]
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	& Leistung = Spannung \cdot Strom && \left // \texttt{linksbündig} \right. \\
+	& P = U \cdot I 										\\
+	& [ W ] = [ V ] \cdot [ A ]
+\end{lstlisting}
+
+
+\begin{align}% Text: \texttt{Mathe-Text}
+x_{1,2}=\frac{-b \pm \sqrt{b^2-4\cdot a \cdot c}}{2 \cdot a}
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	x_{1,2}=\frac{-b \pm \sqrt{b^2-4\cdot a \cdot c}}{2 \cdot a}
+\end{lstlisting}
+
+
+\subsection{Relationen und Mengen}\label{RelationenMengen }\index{Relationen }\index{Mengen }
+
+\begin{align}
+<			      \quad
+\leq 				\quad
+>						\quad
+\geq 				\quad
+=						\quad
+\subseteq 	\quad
+\supseteq 	\quad
+\in 				\quad
+\notin 			\quad
+\cap 				\quad
+\cup        \quad
+\mathbb{C \quad R \quad Q \quad Z \quad N}
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	<			      \quad
+	\leq 				\quad
+	>						\quad
+	\geq 				\quad
+	=						\quad
+	\subseteq 	\quad
+	\supseteq 	\quad
+	\in 				\quad
+	\notin 			\quad
+	\cap 				\quad
+	\cup        \quad
+	\mathbb{C \quad R \quad Q \quad Z \quad N}
+\end{lstlisting}
+
+
+\subsection{Funktionen}\label{funktionen }\index{Funktionen }
+
+\begin{align}
+\exp
+\lim
+\ln
+\log
+\sin
+\cos
+\tan
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\exp
+	\lim
+	\ln
+	\log
+	\sin
+	\cos
+	\tan
+\end{lstlisting}
+
+
+\subsection{Einheiten und Winkelgrad}\label{einheiten }\index{Einheiten }
+
+\begin{align}
+100\,^{\circ}\mathrm{C} \quad
+360^\circ               \quad
+1,8\,\Omega             \quad
+500\,ml.
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	100\,^{\circ}\mathrm{C} \quad
+	360^\circ               \quad
+	1,8\,\Omega             \quad
+	500\,ml.
+\end{lstlisting}
+
+
+\subsection{griechische Alphabet}\label{griechischeAlphabet }\index{griechische Alphabet }
+
+\begin{align}
+\alpha
+\beta
+\gamma
+\delta
+\epsilon
+\varepsilon
+\zeta
+\eta
+\pi
+\varpi
+\rho
+\varrho
+\sigma
+\varsigma
+\tau
+\upsilon
+\phi
+\varphi
+\chi
+\psi
+\omega \quad \texttt{klein}
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\alpha
+	\beta
+	\gamma
+	\delta
+	\epsilon
+	\varepsilon
+	\zeta
+	\eta
+	\pi
+	\varpi
+	\rho
+	\varrho
+	\sigma
+	\varsigma
+	\tau
+	\upsilon
+	\phi
+	\varphi
+	\chi
+	\psi
+	\omega \quad \texttt{klein}
+\end{lstlisting}
+
+
+\begin{align}
+A
+E
+\Gamma
+\Delta
+\Theta
+\Lambda
+\Xi
+\Pi
+\Sigma
+\Upsilon
+\Phi \quad \texttt{groß}
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	A
+	E
+	\Gamma
+	\Delta
+	\Theta
+	\Lambda
+	\Xi
+	\Pi
+	\Sigma
+	\Upsilon
+	\Phi \quad \texttt{groß}
+\end{lstlisting}
+
+
+\subsection{Fallunterscheidung}\label{fallunterscheidung }\index{Fallunterscheidung }
+
+\begin{align}
+\texttt{sin}(x) =
+	\begin{cases}
+		-1 & \texttt{für } x<0 \\
+		 0 & \texttt{für } x=0 \\
+		 1 & \texttt{für } x>0
+	\end{cases}
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\texttt{sin}(x) =
+		\begin{cases}
+			-1 & \texttt{für } x<0 \\
+			 0 & \texttt{für } x=0 \\
+			 1 & \texttt{für } x>0
+		\end{cases}
+\end{lstlisting}
+
+
+\subsection{Punkte}\label{punkte }\index{Punkte }
+
+\begin{align}
+& x_1,x_2,\ldots{},x_n     \\		% linedots = zwischen variablen
+& x_1 + x_2 + \cdots + x_n \\		% centerdots = zwischen operatoren
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	& x_1,x_2,\ldots{},x_n     \\		% linedots = zwischen variablen
+	& x_1 + x_2 + \cdots + x_n  		% centerdots = zwischen operatoren
+\end{lstlisting}
+
+
+\subsection{Klammern}\label{klammern }\index{Klammern }
+
+\begin{align}
+& ((a+b) \cdot (a+b))\\
+& \bigl((a+b) \cdot (a+b)\bigr)\\
+& \left(\sum_{i=1}^5\right)\\
+& \left\lvert \sum_{i=1}^5 \right\rvert
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	& ((a+b) \cdot (a+b))\\
+	& \bigl((a+b) \cdot (a+b)\bigr)\\
+	& \left(\sum_{i=1}^5\right)\\
+	& \left\lvert \sum_{i=1}^5 \right\rvert
+\end{lstlisting}
+
+
+\subsection{Abstände}\label{abstaende }\index{Abstände }
+
+\begin{align}
+& x>y \quad  \text{, Abstand } \\
+& x>y \qquad \text{, Abstand } \\
+& x>y \,     \text{, Abstand }
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	& x>y \quad  \text{, Abstand } \\
+	& x>y \qquad \text{, Abstand } \\
+	& x>y \,     \text{, Abstand }
+\end{lstlisting}
+
+
+\subsection{Vektoren}\label{vektoren }\index{Vektoren }
+
+\begin{align}
+\vec{a}          \\   % vektor
+\overrightarrow{a+b}  % vektoraddition
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\vec{a}          \\   % vektor
+	\overrightarrow{a+b}  % vektoraddition
+\end{lstlisting}
+
+
+\begin{align}
+A = \begin{pmatrix} % runde Klammer
+			a_{1} \\
+			a_{2}
+	  \end{pmatrix}
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	A = \begin{pmatrix} % runde Klammer
+				a_{1} \\
+				a_{2}
+		  \end{pmatrix}
+\end{lstlisting}
+
+
+\subsection{Matrizen}\label{matrizen}\index{Matrizen}
+
+\begin{align}
+  \left(
+   \begin{array}{ccc}
+     a_{11} & \cdots & a_{1n} \\
+     \vdots & \ddots & \vdots \\
+     a_{m1} & \cdots & a_{mn}
+   \end{array}
+  \right)
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\left(
+   \begin{array}{ccc}
+     a_{11} & \cdots & a_{1n} \\
+     \vdots & \ddots & \vdots \\
+     a_{m1} & \cdots & a_{mn}
+   \end{array}
+  \right)
+\end{lstlisting}
+
+\begin{align}
+A = \begin{pmatrix} % runde Klammer
+			a_{11} & a_{12} & \hdots \\
+			a_{21} & a_{22} & \hdots \\
+			\vdots & \vdots 	& \ddots
+		\end{pmatrix}
+\end{align}
+
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	A = \begin{pmatrix} % runde Klammer
+				a_{11} & a_{12} & \hdots \\
+				a_{21} & a_{22} & \hdots \\
+				\vdots & \vdots 	& \ddots
+			\end{pmatrix}
+\end{lstlisting}
+
+
+\begin{align}
+A = \begin{vmatrix} % vertikaler Strich
+			a_{11} & a_{12} & \hdots \\
+			a_{21} & a_{22} & \hdots \\
+			\vdots & \vdots 	& \ddots
+		\end{vmatrix}
+\end{align}
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	A = \begin{vmatrix} % vertikaler Strich
+				a_{11} & a_{12} & \hdots \\
+				a_{21} & a_{22} & \hdots \\
+				\vdots & \vdots 	& \ddots
+			\end{vmatrix}
+\end{lstlisting}
+
+
+\subsection{Einheiten}\label{einheiten }\index{Einheiten }
+
+\num{12345678}\\
+\num{.12345678}\\
+
+\num{2.3e2}\\
+\num{2.3d-2}\\
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\num{12345678}\\
+	\num{.12345678}\\
+
+	\num{2.3e2}\\
+	\num{2.3d-2}
+\end{lstlisting}
+
+
+\ang{13;12;11}\\
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\ang{13;12;11}
+\end{lstlisting}
+
+
+\sisetup{per-mode=symbol}
+\SI{1.7e2}{\pico\joule\per\kilo\gram\squared}\\
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\sisetup{per-mode=symbol}
+	\SI{1.7e2}{\pico\joule\per\kilo\gram\squared}
+\end{lstlisting}
+
+
+\sisetup{per-mode=fraction}
+\SI{1.7e2}{\pico\joule\per\kilo\gram\squared}\\
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\sisetup{per-mode=fraction}
+	\SI{1.7e2}{\pico\joule\per\kilo\gram\squared}\\
+\end{lstlisting}
+
+
+\SI{2.8}{\meter\cubed}\\
+\SI{2.8}{\meter\tothe{5}}\\
+\SI{2 x 3 x 4}{\milli\meter}\\
+\SI[product-units=power]{2 x 3 x 4}{\milli\meter}\\
+
+
+\lstset{language=[LaTeX]TeX } % ohne Zeilennummern, Hindergrund: weiss, ohne Rahmen
+\begin{lstlisting}[gobble=2, frame=none, numbers=none, backgroundcolor=\color{white},%
+	caption={},label={code:}]
+	\SI{2.8}{\meter\cubed}\\
+	\SI{2.8}{\meter\tothe{5}}\\
+	\SI{2 x 3 x 4}{\milli\meter}\\
+	\SI[product-units=power]{2 x 3 x 4}{\milli\meter}
+\end{lstlisting}
+
+
+%============================
+%============================
+%============================
+%============================
+%============================
