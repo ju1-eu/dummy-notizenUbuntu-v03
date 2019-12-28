@@ -181,6 +181,9 @@ while read ordnername; do
   echo "#-----$ordnername"
   cd ./$THEMA
 
+  # löschen von neu.md ...
+  find ./ -name 'neu.*' 2>/dev/null -exec rm -rf {}  +
+
   # projekt erstellen
   if [ $NEUE_NOTIZEN_TRUE -eq 1 ]; then
     # Scriptaufruf  
@@ -229,15 +232,6 @@ while read ordnername; do
       git remote add $LESEZEICHEN $repos_USB/$REPOSITORY_NEU.git
       git push --all $LESEZEICHEN
       echo "Backup Repository USB erstellt"
-
-      #if [ -d $repos_RPI4/$REPOSITORY_NEU.git ]; then
-      #    rm -rf $repos_RPI4/$REPOSITORY_NEU.git
-      #fi
-      #git clone --no-hardlinks --bare . $repos_RPI4/$REPOSITORY_NEU.git
-      #LESEZEICHEN="backupRPI4"
-      #git remote add $LESEZEICHEN $repos_RPI4/$REPOSITORY_NEU.git
-      #git push --all $LESEZEICHEN
-      #echo "Backup Repository RPI4 erstellt"
     fi
 
     # PDFs book + Artikel erstellen (book.pdf) - Archiv (tex)
@@ -295,21 +289,24 @@ while read ordnername; do
       # latexmk
       latexmk -f -pdf $print
 
-
 		  # Latex aufraeumen
 		  rm -f *~ *.aux *.bbl *.blg *.fls *.log *.nav *.out *.snm *.synctex *.toc \
 		    *.idx *.ilg *.ind *.thm *.lof *.lol *.lot *.nlo *.run.xml *blx.bib *.bcf
 
 		  cp a_*.pdf  $pdf/
       cp main*.pdf $pdf/
-
-
+      mv $pdf/main-print.pdf $pdf/$THEMA-print.pdf
+      mv $pdf/main-book.pdf $pdf/$THEMA-book.pdf
       else
         echo "Fehler: $tex leer";
       fi
     fi
     
   fi
+
+  # Websiten
+  $work/$scripte/www.sh
+
   # Git Version
   #----------------------------------------------------
   #repos_USB="/media/jan/usb/repos/notizenUbuntu"    
@@ -343,16 +340,12 @@ while read ordnername; do
     #git tag
     git tag v1.0 # release
 
-    # PDF-Versionen erstellen
-    echo "pdfVersionen.sh"
-    # Scriptaufruf
-		$work/$scripte/datum-version.sh
-		#$work/$scripte/pdfErstellen.sh
-		$work/$scripte/pdfVersionen.sh
+    # backup - archiv
+    rm -rf $archiv_HD/$THEMA.zip
+	  zip -r $archiv_HD/$THEMA.zip .
+		rm -rf $archiv_USB/$THEMA.zip
+	  zip -r $archiv_USB/$THEMA.zip .
 
-    # Latex aufraeumen
-    rm -f *~ *.aux *.bbl *.blg *.fls *.log *.nav *.out *.snm *.synctex *.toc \
-      *.idx *.ilg *.ind *.thm *.lof *.lol *.lot *.nlo *.run.xml *blx.bib *.bcf
 
     # Backup Repository: backup/master  
     REPOSITORY_NEU="$THEMA"
@@ -407,22 +400,6 @@ while read ordnername; do
       echo "+ Backup ($backup_HD/$THEMA/)"
     fi
   fi
-
-  #if [ $BACKUP_RPI4_TRUE -eq 1 ]; then
-    #echo "+ Backup (RPI4)"
-    # Speicher - Laufwerk vorhanden?
-    #if [ ! -d $backup_RPI4 ]; then
-    #  echo "$backup_RPI4 mounten."
-    #else
-    #  # backup 
-    #  rsync -a --delete ./ $backup_RPI4/$THEMA/
-    #  echo "+ Backup ($backup_RPI4/$THEMA/)"
-    #fi
-  #fi  
-
-
-    
-
 
   # Archiv 
   #-------------------------------------------------------

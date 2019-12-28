@@ -397,6 +397,18 @@ elif [ $a -eq 13 ]; then
 		# latexmk
 		latexmk -f -pdf main-book
 		latexmk -f -pdf main-print
+
+		array=$(ls $tex)
+		#Array lesen
+		for a in ${array[@]}; do
+			# filename: file.tex
+			#echo $a
+			# basename: file
+			#echo ${a%.*}
+			basename=${a%.*}
+			# latexmk
+			latexmk -f -pdf a_$basename.tex
+		done
 	# --------------------
 	else
 		echo "+++ $info"

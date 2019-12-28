@@ -95,17 +95,18 @@ while [ "$janein" -eq 1 ]; do
 	printf "\n  2) Kopie tex (Pandoc) - tex (Handarbeit)"
 	printf "\n  3) Kapitel erstellen, Scripte ausführen"
 	printf "\n  4) Beamer"
-	printf "\n  5) TEST: Artikel-PDFs erstellen mit latexmk (a_*.pdf)"
+	printf "\n  5) TEST: PDFs schnell erstellen mit latexmk"
 	printf "\n  6) PDFs erstellen (book-, print-, artikel.pdf) - Archiv (tex)"
 	printf "\n  7) Projekt aufräumen"
 	printf "\n  8) Git-Version erstellen"
-	printf "\n  9) git status und git log --graph --oneline"
+	printf "\n  9) git status und git log"
 	printf "\n 10) git init"
 	printf "\n 11) Fotos optimieren (Web, Latex)"
-	printf "\n 12) book-pdf-Version erstellen"
-	printf "\n 13) Backup (archiv/*.zip & *.tar.gz) & (/media/jan/virtuell/backup)"
-	printf "\n 14) www"
-	printf "\n 15) Beenden?"
+	printf "\n 12) pdf-Version erstellen"
+	printf "\n 13) Backup - Archiv - Netzwerk - USB erstellen"
+	printf "\n 14) www & index.html"
+	printf "\n 15) Sind die PDFs up-to-date?"
+	printf "\n 16) Beenden?"
 	a=
 	while [ -z "$a" ]; do
 		printf "\n\n Eingabe Zahl >_ "
@@ -122,7 +123,7 @@ while [ "$janein" -eq 1 ]; do
 
 	# --------------------
 	if [ $a -eq 0 ]; then
-		# Projekt erstellen. ACHTUNG: git init bzw. rm -rf .git
+		# Projekt erstellen
 		# Scriptaufruf
 		./$scripte/projekterstellen.sh
 
@@ -136,7 +137,6 @@ while [ "$janein" -eq 1 ]; do
   # --------------------
 	elif [ $a -eq 2 ]; then
 		# Kopie tex (Pandoc) - tex (Handarbeit)
-		# -u	überspringt Dateien, die im Ziel neuer sind als in der Quelle
 		rsync -a $tex_pandoc/ $tex
 
   # --------------------
@@ -184,7 +184,7 @@ while [ "$janein" -eq 1 ]; do
 
   # --------------------
 	elif [ $a -eq 5 ]; then
-		# TEST: PDFs erstellen mit latexmk (a_*.pdf)
+		# TEST: PDFs schnell erstellen mit latexmk
 		./$scripte/datum-version.sh
 
 		if [ `ls -a  tex | wc -l` -gt 2 ]; then
@@ -216,11 +216,35 @@ while [ "$janein" -eq 1 ]; do
 		    latexmk -f -pdf a_$basename.tex
 		  done
 
+		  # book
+      dummyBook="main-book-dummy.tex"
+      #ls $content/$dummyBook
+      # schreibe in datei
+      book="main-book"
+      echo "% $copyright" > $book.tex
+      cat $content/$dummyBook >> $book.tex
+
+      # latexmk
+      latexmk -f -pdf $book
+
+      # print
+      dummyPrint="main-print-dummy.tex"
+      #ls $content/$dummyPrint
+      # schreibe in datei
+      print="main-print"
+      echo "% $copyright" > $print.tex
+      cat $content/$dummyPrint >> $print.tex
+
+      # latexmk
+      latexmk -f -pdf $print
+
+
 		  # Latex aufraeumen
 		  rm -f *~ *.aux *.bbl *.blg *.fls *.log *.nav *.out *.snm *.synctex *.toc \
 		    *.idx *.ilg *.ind *.thm *.lof *.lol *.lot *.nlo *.run.xml *blx.bib *.bcf
 
 		  cp a_*.pdf  $pdf/
+      cp main*.pdf $pdf/
 		else
 		  echo "Fehler: $tex/ leer; Schritt 1 bis 3 ausführen.";
 		fi
@@ -274,13 +298,13 @@ while [ "$janein" -eq 1 ]; do
 		echo "fertig"
 	# --------------------
   elif [ $a -eq 8 ]; then
-		# Git-Version (tex & md, ACHTUNG: wenn Projekt neu, dann git init bzw. rm -rf .git)
+		# Git-Version erstellen
 		# Scriptaufruf
 		./$scripte/gitversionieren.sh
 
 		# --------------------
 	elif [ $a -eq 9 ]; then
-		# git status und git log --graph --oneline
+		# git status und git log 
 		git add .
 		git status
 		echo "# ----------------------------------------------"
@@ -363,10 +387,28 @@ elif [ $a -eq 13 ]; then
 
 	# --------------------
 	elif [ $a -eq 14 ]; then
-		# www
+		# www & index.html
 		# Scriptaufruf
 		./$scripte/www.sh
 
+	# --------------------
+	elif [ $a -eq 15 ]; then
+		# Sind die PDFs up-to-date?
+		# latexmk
+		latexmk -f -pdf main-book
+		latexmk -f -pdf main-print
+
+		array=$(ls $tex)
+		#Array lesen
+		for a in ${array[@]}; do
+			# filename: file.tex
+			#echo $a
+			# basename: file
+			#echo ${a%.*}
+			basename=${a%.*}
+			# latexmk
+			latexmk -f -pdf a_$basename.tex
+		done
 	# --------------------
 	else
 		echo "+++ $info"
